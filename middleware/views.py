@@ -108,8 +108,13 @@ class AddMeView(views.APIView):
 
 class Pay(views.APIView):
     def post(self, request, *args, **kwargs):
-        print(request.data.get('token'))
-        tran_obj = Transection.objects.all()
-        wallet_obj = WalletDetails.objects.all()
-        print(tran_obj.get(id=request.data.get('code')))
+        try:
+            tran_obj    = Transection.objects.get(id=request.data.get('code'))
+            # wallet_obj  = WalletDetails.objects.
+            print(tran_obj)
+            condition, user_obj = check_token(request.data['token'])
+
+            print(tran_obj.filter(id=request.data.get('code')))
+        except Exception as e:
+            print(e)
         return Response({'working':'working'})
