@@ -110,4 +110,6 @@ class Pay(views.APIView):
     def post(self, request, *args, **kwargs):
         print(request.data.get('token'))
         tran_obj = Transection.objects.all()
+        wallet_obj = WalletDetails.objects.all()
+        print(tran_obj.get(id=request.data.get('code')))
         return Response({'working':'working'})
