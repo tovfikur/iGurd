@@ -109,12 +109,16 @@ class AddMeView(views.APIView):
 class Pay(views.APIView):
     def post(self, request, *args, **kwargs):
         try:
-            tran_obj    = Transection.objects.get(id=request.data.get('code'))
-            # wallet_obj  = WalletDetails.objects.
-            print(tran_obj)
             condition, user_obj = check_token(request.data['token'])
-
-            print(tran_obj.filter(id=request.data.get('code')))
+            tran_obj    = Transection.objects.get(id=request.data.get('code'))
+            wallet_obj  = WalletDetails.objects.get(userId=user_obj)
+            print(type(tran_obj.BuyerWalletId),type(wallet_obj.id))
+            print(tran_obj.BuyerWalletId,wallet_obj.id)
+            if tran_obj.BuyerWalletId == wallet_obj.id:
+                tran_obj.paid = True
+                tran_obj.save()
+            else:
+                return Response({'code':'You are not authorized to pay this'})
         except Exception as e:
-            print(e)
+            return Response({'error':str(e)})
         return Response({'working':'working'})
