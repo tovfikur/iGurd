@@ -19,7 +19,8 @@ class UserDetails(models.Model):
 class Notifications(models.Model):
     UserId      = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.CASCADE)
     Massage     = models.TextField
-    Importance  = models.SmallIntegerField
+    Importance  = models.SmallIntegerField(default=0)
+    Seen        = models.BooleanField(default=False)
 
 
 class UserToken(models.Model):
