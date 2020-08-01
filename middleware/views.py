@@ -31,6 +31,14 @@ class TransectionView(generics.CreateAPIView):
                     buyer_wallet = wallet.get(id=request.data.get('BuyerWalletId'))
                     if not wallet_user == buyer_wallet:
                         return Response({'Wallet':'You are not authorized to use this wallet'})
+                    buyer_wallet_obj = wallet.get(userId=obj)
+                    if buyer_wallet_obj.Cash >= request.data.get('FixedCash'):
+                        buyer_wallet_obj.Cash = buyer_wallet_obj.Cash - request.data.get('FixedCash')
+                        buyer_wallet_obj.TotalTransfer = buyer_wallet_obj.TotalTransfer + request.data.get('FixedCash')
+                        buyer_wallet_obj.save()
+                    else:
+                        return Response({'Cash': 'Wallet out of money'})
+
                 elif request.data.get('SellerWalletId'):
                     seller_wallet = wallet.get(id=request.data.get('SellerWalletId'))
                     if not wallet_user == seller_wallet:
@@ -40,17 +48,6 @@ class TransectionView(generics.CreateAPIView):
                 return Response({'error':str(e)})
             if type(obj) == str:
                 return Response({'login': 'Unsuccessful'})
-            print(obj.id)
-            if request.data.get('BuyerWalletId') == obj.id:
-                buyer_wallet_obj = WalletDetails.objects.filter(userId=obj)[0]
-                if buyer_wallet_obj.Cash >= request.data.get('FixedCash'):
-                    buyer_wallet_obj.Cash = buyer_wallet_obj.Cash - request.data.get('FixedCash')
-                    buyer_wallet_obj.TotalTransfer = buyer_wallet_obj.TotalTransfer + request.data.get('FixedCash')
-                    buyer_wallet_obj.save()
-                else:
-                    return Response({'Cash': 'Wallet out of money'})
-            else:
-                pass
         except Exception as e:
             return Response({'error':str(e)})
 
@@ -97,8 +94,6 @@ class AddMeView(views.APIView):
                 else:
                     wallet_obj.Cash = wallet_obj.Cash - tran_obj.FixedCash
                     wallet_obj.save()
-                    tran_obj.paid = True
-                    tran_obj.save()
                 tran_obj.BuyerWalletId = wallet_obj.id
                 tran_obj.save()
             elif tran_obj.BuyerWalletId:
