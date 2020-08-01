@@ -16,6 +16,12 @@ class UserDetails(models.Model):
         return str(self.Phone)
 
 
+class Notifications(models.Model):
+    UserId      = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.CASCADE)
+    Massage     = models.TextField
+    Importance  = models.SmallIntegerField
+
+
 class UserToken(models.Model):
     user    = models.OneToOneField(UserDetails,on_delete=models.CASCADE,blank=False)
     token   = models.CharField(unique=True,blank=False,default='0',max_length=256)
