@@ -103,4 +103,4 @@ class AddMeView(views.APIView):
         except Exception as e:
             print(e)
             return Response({'error':str(e)})
-        return Response({'Code':'Paid'})
+        return Response({'Code':'Added'})

@@ -8,7 +8,7 @@ class UserDetails(models.Model):
     District	= models.CharField(default=None,max_length=10)
     Upzila		= models.CharField(default=None,max_length=10)
     Phone		= PhoneNumberField(default='+8801796693300',unique=True)
-    Email       =models.CharField(null=True,max_length=50,blank=True,unique=True)
+    # Email       =models.CharField(null=True,max_length=50,blank=True,unique=True)
     ACT			= models.BooleanField(default=True)
     Password	= models.CharField(null=False,default=None,max_length=16)
 

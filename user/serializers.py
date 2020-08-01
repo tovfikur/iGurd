@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 			'District',
 			'Upzila',
 			'Phone',
-			'Email',
+			# 'Email',
 			'Password'
 		]
 
@@ -20,7 +20,7 @@ class UserUpdateSerialiser(serializers.ModelSerializer):
 		fields = [
 			'District',
 			'Upzila',
-			'Email',
+			# 'Email',
 			'Password'
 		]
 
