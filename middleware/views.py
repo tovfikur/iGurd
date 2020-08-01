@@ -86,7 +86,19 @@ class AddMeView(views.APIView):
             if tran_obj.SellerWalletId and tran_obj.BuyerWalletId:
                 return Response({'Code': 'Already used'})
             elif tran_obj.paid:
+                return Response({') == str:
+            return Response({'login': 'Unsuccessful'})
+        try:
+            tran_obj = Transection.objects.filter(id = request.data['code'])[0]
+        except Exception as e:
+            return Response({'error':str(e),'code':'Invalid'})
+        try:
+            if tran_obj.SellerWalletId and tran_obj.BuyerWalletId:
+                return Response({'Code': 'Already used'})
+            elif tran_obj.paid:
                 return Response({'Code': 'Already paid'})
+            if tran_obj.SellerWalletId:
+                wallet_obj = WalletDeCode': 'Already paid'})
             if tran_obj.SellerWalletId:
                 wallet_obj = WalletDetails.objects.filter(userId=obj)[0]
                 if wallet_obj.Cash < tran_obj.FixedCash:
