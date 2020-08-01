@@ -104,3 +104,10 @@ class AddMeView(views.APIView):
             print(e)
             return Response({'error':str(e)})
         return Response({'Code':'Added'})
+
+
+class Pay(views.APIView):
+    def post(self, request, *args, **kwargs):
+        print(request.data.get('token'))
+        tran_obj = Transection.objects.all()
+        return Response({'working':'working'})
