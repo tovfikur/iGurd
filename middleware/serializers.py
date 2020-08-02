@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cash, Transection
+from .models import Cash, Transaction
 from wallet.models import WalletDetails
 from user.models import UserToken
 
@@ -15,7 +15,7 @@ class CashInSerializer(serializers.ModelSerializer):
 
 class TransectionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Transection
+        model = Transaction
         fields = [
             'id',
 			'BuyerWalletId',

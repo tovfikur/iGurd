@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from user.login import check_token
 # Create your views here.
 
-from .models import Cash,Transection
+from .models import Cash,Transaction
 from wallet.models import WalletDetails
 from .serializers import CashInSerializer, TransectionSerializer
 
@@ -17,7 +17,7 @@ class CashInView(generics.CreateAPIView):
 
 
 class TransectionView(generics.CreateAPIView):
-    queryset = Transection
+    queryset = Transaction
     serializer_class = TransectionSerializer
 
     def create(self, request, *args, **kwargs):
@@ -65,7 +65,7 @@ class AddMeView(views.APIView):
         except Exception:
             return Response({'Example':{'url':'[IP]:[PORT]/middleware/link/add/?code=[INTEGER]','POST':{'code':'[INTEGER]','token':'xxxxxxxxxxxx'}}})
         try:
-            tran_obj = Transection.objects.filter(id = request.GET['code'])[0]
+            tran_obj = Transaction.objects.filter(id = request.GET['code'])[0]
             serialized_obj = serializers.serialize('json', [tran_obj, ])
             serialized_obj = json.loads(serialized_obj)
             print(serialized_obj)
@@ -79,7 +79,7 @@ class AddMeView(views.APIView):
         if type(obj) == str:
             return Response({'login': 'Unsuccessful'})
         try:
-            tran_obj = Transection.objects.filter(id = request.data['code'])[0]
+            tran_obj = Transaction.objects.filter(id = request.data['code'])[0]
         except Exception as e:
             return Response({'error':str(e),'code':'Invalid'})
         try:
@@ -110,7 +110,7 @@ class Pay(views.APIView):
     def post(self, request, *args, **kwargs):
         try:
             condition, user_obj = check_token(request.data['token'])
-            tran_obj    = Transection.objects.get(id=request.data.get('code'))
+            tran_obj    = Transaction.objects.get(id=request.data.get('code'))
             wallet_obj  = WalletDetails.objects.get(userId=user_obj)
             print(type(tran_obj.BuyerWalletId),type(wallet_obj.id))
             print(tran_obj.BuyerWalletId,wallet_obj.id)
