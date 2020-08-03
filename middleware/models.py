@@ -11,6 +11,7 @@ class Cash(models.Model):
 
 
 class Transaction(models.Model):
+    Creator             = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.DO_NOTHING)
     SellerWalletId      = models.IntegerField(blank=True,null=True)
     BuyerWalletId       = models.IntegerField(blank=True,null=True)
     FixedCash           = models.IntegerField(default=None,blank=False)
