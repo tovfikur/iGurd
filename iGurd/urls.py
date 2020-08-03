@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('user/', include('user.urls')),
-    path('middleware/', include('middleware.urls')),
-    path('wallet/', include(('wallet.urls'))),
-    path('admin/', admin.site.urls),
+    path('api/user/', include('user.urls')),
+    path('api/middleware/', include('middleware.urls')),
+    path('api/wallet/', include(('wallet.urls'))),
+    path('api/admin/', admin.site.urls),
 ]

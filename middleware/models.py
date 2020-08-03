@@ -11,14 +11,14 @@ class Cash(models.Model):
 
 
 class Transaction(models.Model):
-    Creator             = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.DO_NOTHING)
-    SellerWalletId      = models.IntegerField(blank=True,null=True)
-    BuyerWalletId       = models.IntegerField(blank=True,null=True)
+    Creator             = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.DO_NOTHING, related_name='Creator_of_this_transaction',default=1)
+    SellerWalletId      = models.ForeignKey(UserDetails,blank=True,null=True, on_delete=models.DO_NOTHING, related_name='Seller_of_this_transection',default=1)
+    BuyerWalletId       = models.ForeignKey(UserDetails,blank=True,null=True,on_delete=models.DO_NOTHING,related_name='Buyer_of_this_transection',default=1)
     FixedCash           = models.IntegerField(default=None,blank=False)
     Time                = models.DateTimeField(auto_now_add=True)
     paid                = models.BooleanField(default=False)
     Product             = models.BooleanField(default=True)
-    Title               = models.CharField(blank=False,null=False,max_length=50)
+    Title               = models.CharField(blank=False,null=False,max_length=50,default='Write a TITLE')
     ExtraText           = models.TextField
     Image1              = models.ImageField(blank=False,null=False)
     Image2              = models.ImageField(blank=False,null=False)
