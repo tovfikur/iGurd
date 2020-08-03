@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('middleware', '0017_auto_20200803_1319'),
         ('user', '0008_delete_notifications'),
-        ('massenger', '0001_initial'),
+        ('messenger', '0001_initial'),
     ]
 
     operations = [
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='chat',
             name='Replays',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, to='massenger.Chat'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, to='messenger.Chat'),
         ),
         migrations.AlterField(
             model_name='chat',

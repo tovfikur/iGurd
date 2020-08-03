@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('massenger', '0003_chat_text'),
+        ('messenger', '0003_chat_text'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='chat',
             name='Replays',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='massenger.Chat'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='messenger.Chat'),
         ),
     ]

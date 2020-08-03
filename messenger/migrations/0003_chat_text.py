@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('massenger', '0002_auto_20200803_1413'),
+        ('messenger', '0002_auto_20200803_1413'),
     ]
 
     operations = [

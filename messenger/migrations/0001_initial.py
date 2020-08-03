@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('Time', models.DateTimeField(auto_now_add=True)),
-                ('Replays', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='massenger.Chat')),
+                ('Replays', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='messenger.Chat')),
                 ('Subject', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='middleware.Transaction')),
             ],
         ),

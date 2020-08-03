@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'user',
     'middleware',
     'wallet',
+    'messenger',
     'website',
     
     # plugin
