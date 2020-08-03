@@ -5,10 +5,10 @@ from user.models import UserDetails
 
 
 class Chat(models.Model):
-    Subject     = models.ForeignKey(Transaction,on_delete=models.DO_NOTHING)
-    Replays    = models.ForeignKey('self', on_delete=models.DO_NOTHING)
-    Text       = models.TextField
+    UserID     = models.ForeignKey(UserDetails,on_delete=models.DO_NOTHING,default=1)
+    Subject    = models.ForeignKey(Transaction,on_delete=models.DO_NOTHING,default=1)
+    Replays    = models.ForeignKey('self', on_delete=models.DO_NOTHING,default=1)
+    Text       = models.TextField()
+    Importance = models.SmallIntegerField(default=0)
     Time       = models.DateTimeField(auto_now_add=True)
-
-
-
+    Seen       = models.BooleanField(default=False)
