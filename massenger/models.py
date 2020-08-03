@@ -7,7 +7,7 @@ from user.models import UserDetails
 class Chat(models.Model):
     UserID     = models.ForeignKey(UserDetails,on_delete=models.DO_NOTHING,default=1)
     Subject    = models.ForeignKey(Transaction,on_delete=models.DO_NOTHING,default=1)
-    Replays    = models.ForeignKey('self', on_delete=models.DO_NOTHING,default=1)
+    Replays    = models.ForeignKey('self', on_delete=models.DO_NOTHING,null=True,blank=True,)
     Text       = models.TextField()
     Importance = models.SmallIntegerField(default=0)
     Time       = models.DateTimeField(auto_now_add=True)
