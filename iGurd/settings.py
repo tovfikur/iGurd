@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'middleware',
     'wallet',
     'massenger',
+    'website',
     
     # plugin
     'phonenumber_field',
