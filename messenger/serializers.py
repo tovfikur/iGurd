@@ -1,14 +1,21 @@
 from rest_framework import serializers
-from .models import Chat
+from .models import Chat, ChadBody
 
 
-class MassageSerializer(serializers.ModelSerializer):
+class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
         fields = [
             'id',
             'UserID',
-            'Text',
             'Time',
+        ]
+
+class ChatBodySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChadBody
+        fields = [
+            'Chat',
+            'Text',
             'Seen'
         ]
