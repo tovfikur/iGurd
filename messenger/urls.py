@@ -3,4 +3,5 @@ from .views import Massages
 
 urlpatterns = [
    path('', Massages.as_view()),
+
 ]

@@ -9,7 +9,7 @@ class Chat(models.Model):
     Time       = models.DateTimeField(auto_now_add=True)
 
 
-class ChadBody(models.Model):
+class ChatBody(models.Model):
     Chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     Text = models.TextField(null=True,blank=True)
     Seen = models.BooleanField(default=False)

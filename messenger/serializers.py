@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Chat, ChadBody
+from .models import Chat, ChatBody
 
 
 class ChatSerializer(serializers.ModelSerializer):
@@ -13,7 +13,7 @@ class ChatSerializer(serializers.ModelSerializer):
 
 class ChatBodySerializer(serializers.ModelSerializer):
     class Meta:
-        model = ChadBody
+        model = ChatBody
         fields = [
             'Chat',
             'Text',
