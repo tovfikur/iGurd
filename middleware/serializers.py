@@ -18,6 +18,7 @@ class TransectionSerializer(serializers.ModelSerializer):
         model = Transaction
         fields = [
             'id',
+            'Creator',
             'BuyerWalletId',
             'SellerWalletId',
             'FixedCash',
@@ -27,7 +28,8 @@ class TransectionSerializer(serializers.ModelSerializer):
             'Image2',
             'Image3',
             'Image4',
-            'Image5'
+            'Image5',
+            'token',
 		]
     def validate(self, data):
         wallet_obj = WalletDetails.objects.all()
