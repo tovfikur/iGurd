@@ -21,6 +21,7 @@ class TransectionView(generics.CreateAPIView):
     serializer_class = TransectionSerializer
 
     def create(self, request, *args, **kwargs):
+        print(request.data)
         try:
             condition, obj = check_token(request.data['token'])
             wallet         = WalletDetails.objects.all()
