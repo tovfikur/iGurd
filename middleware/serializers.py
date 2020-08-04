@@ -28,7 +28,7 @@ class TransectionSerializer(serializers.ModelSerializer):
             'Image2',
             'Image3',
             'Image4',
-            'Image5'
+            'Image5',
             'Chat'
 		]
     def validate(self, data):
