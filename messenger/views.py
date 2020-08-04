@@ -1,16 +1,12 @@
 from django.shortcuts import render
-from rest_framework import generics,views
+from rest_framework import generics,views,status
 from rest_framework.response import Response
-from .models import Chat,ChatBody
+from .models import Chat
 from user.models import UserToken
-from .serializers import ChatSerializer, ChatBodySerializer
+from middleware.models import Transaction
+from .serializers import ChatSerializer
 # Create your views here.
 
 
 class Massages(generics.ListCreateAPIView):
-    serializer_class = ChatBodySerializer
-
-    def get_queryset(self):
-        print(self.request.META)
-
-        return ChatBody.objects.all()
+    serializer_class = ChatSerializer

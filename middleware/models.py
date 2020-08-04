@@ -26,7 +26,7 @@ class Transaction(models.Model):
     Image3              = models.ImageField(blank=True)
     Image4              = models.ImageField(blank=True)
     Image5              = models.ImageField(blank=True)
-    Chat                = models.ForeignKey(Chat,blank=True,null=True,on_delete=models.DO_NOTHING)
+    Chat                = models.ManyToManyField(Chat,blank=True,null=True)
 
     def save(self, force_insert=False, **kwargs):
         super(Transaction, self).save(**kwargs)
