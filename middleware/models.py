@@ -26,8 +26,7 @@ class Transaction(models.Model):
     Image3              = models.ImageField(blank=True)
     Image4              = models.ImageField(blank=True)
     Image5              = models.ImageField(blank=True)
-    Chat                = models.ManyToManyField(Chat,blank=True,null=True)
-
+    token               = models.CharField(default='9', max_length=100)
     def save(self, force_insert=False, **kwargs):
         super(Transaction, self).save(**kwargs)
         chat = Chat(UserID=self.Creator)

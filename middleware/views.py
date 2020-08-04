@@ -21,7 +21,6 @@ class TransectionView(generics.CreateAPIView):
     serializer_class = TransectionSerializer
 
     def create(self, request, *args, **kwargs):
-        print(request.data)
         try:
             condition, obj = check_token(request.data['token'])
             wallet         = WalletDetails.objects.all()
@@ -73,6 +72,7 @@ class AddMeView(views.APIView):
             tran_obj = Transaction.objects.filter(id = request.GET['code'])[0]
             serialized_obj = serializers.serialize('json', [tran_obj, ])
             serialized_obj = json.loads(serialized_obj)
+            print(serialized_obj)
             return Response(serialized_obj)
         except Exception as e:
             print(e)
