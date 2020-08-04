@@ -10,3 +10,5 @@ from .serializers import ChatSerializer
 
 class Massages(generics.ListCreateAPIView):
     serializer_class = ChatSerializer
+    def get_queryset(self):
+        return Chat.objects.all()

@@ -9,6 +9,7 @@ class ChatSerializer(serializers.ModelSerializer):
             'id',
             'UserID',
             'Time',
-            'Chat',
             'Text',
+            'Seen',
+            'Importance'
         ]
