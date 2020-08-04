@@ -32,7 +32,7 @@ class TransectionView(generics.CreateAPIView):
                     if not wallet_user == buyer_wallet:
                         return Response({'Wallet':'You are not authorized to use this wallet'})
                     buyer_wallet_obj = wallet.get(userId=obj)
-                    if buyer_wallet_obj.Cash >= request.data.get('FixedCash'):
+                    if buyer_wallet_obj.Cash >= int(request.data.get('FixedCash')):
                         buyer_wallet_obj.Cash = buyer_wallet_obj.Cash - request.data.get('FixedCash')
                         buyer_wallet_obj.TotalTransfer = buyer_wallet_obj.TotalTransfer + request.data.get('FixedCash')
                         buyer_wallet_obj.save()
@@ -48,7 +48,7 @@ class TransectionView(generics.CreateAPIView):
                     if not request.data.get('BuyerWalletId') == request.data.get('Creator'):
                         return Response({"Wallet":"It isn't valid wallet id"})
             except Exception as e:
-                print(e)
+                print('m1',e)
                 return Response({'error':str(e)})
             if type(obj) == str:
                 return Response({'login': 'Unsuccessful'})
@@ -75,7 +75,7 @@ class AddMeView(views.APIView):
             print(serialized_obj)
             return Response(serialized_obj)
         except Exception as e:
-            print(e)
+            print('m2',e)
             return Response({'Info':'Try with correct code'})
 
     def post(self, request, *args, **kwargs):

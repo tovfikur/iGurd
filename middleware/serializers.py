@@ -37,13 +37,13 @@ class TransectionSerializer(serializers.ModelSerializer):
             try:
                 wallet_obj = wallet_obj.get(id=data['BuyerWalletId'])
             except Exception as e:
-                print(e)
+                print('s1',e)
                 raise serializers.ValidationError({"error": "Buyer wallet id isn't valid"})
         elif data['SellerWalletId']:
             try:
                 wallet_obj = wallet_obj.get(id=data['SellerWalletId'])
             except Exception as e:
-                print(e)
+                print('s2',e)
                 raise serializers.ValidationError({"error": "Seller wallet id isn't valid"})
         if not data['SellerWalletId'] and not data['BuyerWalletId']:
             raise serializers.ValidationError({"error": "(Buyer or Seller) Must insert one"})
