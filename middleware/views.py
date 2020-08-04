@@ -102,7 +102,7 @@ class AddMeView(views.APIView):
                 tran_obj.save()
             elif tran_obj.BuyerWalletId:
                 wallet_obj = WalletDetails.objects.filter(userId=obj)[0]
-                tran_obj.SellerWalletId = wallet_obj.id
+                tran_obj.SellerWalletId = wallet_obj.userId
                 tran_obj.save()
         except Exception as e:
             print(e)
