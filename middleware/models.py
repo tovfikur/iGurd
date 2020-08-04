@@ -1,7 +1,6 @@
 from django.db import models
 from user.models import UserDetails
 from phonenumber_field.modelfields import PhoneNumberField
-from messenger.models import Chat
 # Create your models here.
 
 
@@ -26,10 +25,3 @@ class Transaction(models.Model):
     Image3              = models.ImageField(blank=True,null=True)
     Image4              = models.ImageField(blank=True,null=True)
     Image5              = models.ImageField(blank=True,null=True)
-    token               = models.CharField(default='9', max_length=200)
-    def save(self, force_insert=False, **kwargs):
-        super(Transaction, self).save(**kwargs)
-        chat = Chat(UserID=self.Creator)
-        chat.save()
-        self.Chat = chat
-        super(Transaction, self).save(**kwargs)

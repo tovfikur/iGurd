@@ -29,7 +29,6 @@ class TransectionSerializer(serializers.ModelSerializer):
             'Image3',
             'Image4',
             'Image5',
-            'token',
 		]
     def validate(self, data):
         wallet_obj = WalletDetails.objects.all()
