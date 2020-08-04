@@ -33,8 +33,8 @@ class TransectionView(generics.CreateAPIView):
                         return Response({'Wallet':'You are not authorized to use this wallet'})
                     buyer_wallet_obj = wallet.get(userId=obj)
                     if buyer_wallet_obj.Cash >= int(request.data.get('FixedCash')):
-                        buyer_wallet_obj.Cash = buyer_wallet_obj.Cash - request.data.get('FixedCash')
-                        buyer_wallet_obj.TotalTransfer = buyer_wallet_obj.TotalTransfer + request.data.get('FixedCash')
+                        buyer_wallet_obj.Cash = buyer_wallet_obj.Cash - int(request.data.get('FixedCash'))
+                        buyer_wallet_obj.TotalTransfer = buyer_wallet_obj.TotalTransfer + int(request.data.get('FixedCash'))
                         buyer_wallet_obj.save()
                     else:
                         return Response({'Cash': 'Wallet out of money'})
@@ -42,7 +42,7 @@ class TransectionView(generics.CreateAPIView):
                         return Response({"Wallet":"It isn't valid wallet id"})
 
                 elif request.data.get('SellerWalletId'):
-                    seller_wallet = wallet.get(id=request.data.get('SellerWalletId'))
+                    seller_wallet = wallet.get(id=int(request.data.get('SellerWalletId')))
                     if not wallet_user == seller_wallet:
                         return Response({'Wallet': 'You are not authorized to use this wallet'})
                     if not request.data.get('BuyerWalletId') == request.data.get('Creator'):

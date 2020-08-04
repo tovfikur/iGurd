@@ -21,12 +21,12 @@ class Transaction(models.Model):
     Product             = models.BooleanField(default=True)
     Title               = models.CharField(blank=False,null=False,max_length=50,default='Write a TITLE')
     ExtraText           = models.TextField
-    Image1              = models.ImageField(blank=True)
-    Image2              = models.ImageField(blank=True)
-    Image3              = models.ImageField(blank=True)
-    Image4              = models.ImageField(blank=True)
-    Image5              = models.ImageField(blank=True)
-    token               = models.CharField(default='9', max_length=100)
+    Image1              = models.ImageField(blank=True,null=True)
+    Image2              = models.ImageField(blank=True,null=True)
+    Image3              = models.ImageField(blank=True,null=True)
+    Image4              = models.ImageField(blank=True,null=True)
+    Image5              = models.ImageField(blank=True,null=True)
+    token               = models.CharField(default='9', max_length=200)
     def save(self, force_insert=False, **kwargs):
         super(Transaction, self).save(**kwargs)
         chat = Chat(UserID=self.Creator)
