@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Cash, Transaction
 from wallet.models import WalletDetails
+from messenger.serializers import ChatSerializer
 
 
 class CashInSerializer(serializers.ModelSerializer):
@@ -29,7 +30,6 @@ class TransectionSerializer(serializers.ModelSerializer):
             'Image3',
             'Image4',
             'Image5',
-            'Chat'
 		]
     def validate(self, data):
         wallet_obj = WalletDetails.objects.all()
