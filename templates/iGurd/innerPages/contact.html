@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iGurd</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        p.banner-title {
+          font-size: 35px;
+          letter-spacing: 1px;
+        }
+        .form-title h2 {
+    font-size: 20px;
+}
+    </style>
+</head>
+<body>
+
+
+  <header id="header-area" class="header-area bg-white sticky-top">
+    <div class="container-fluid header-section px-2 px-md-5 d-block">
+      <div class="row d-flex align-items-center nav-height">
+        <div class="col-6 col-md-5 col-lg-2 p-lg-0">
+          <div class="logo">
+            <a href="../index.html"><img class="mx-4 mx-md-3" src="../images/innerLogo.png" alt=""></a>
+          </div>
+        </div>
+        <div class="p-0 d-none d-lg-block col-lg-6">
+          <nav class="nav-area">
+            <a href="#" class="nav-item pl-0">About us</a>
+            <a href="#" class="nav-item">How it works</a>
+            <a href="#" class="nav-item">Fee table</a>
+            <a href="#" class="nav-item border-right-0">Contact</a>
+          </nav>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4 d-none d-md-block text-right">
+          <div class="user-buttons text-right">
+            <a class="signup-btn px-2 px-md-3 py-2" href="signup.html">Sign up</a>
+            <a class="login-btn px-3 px-md-4 py-2" href="login.html">Login</a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-1 d-lg-none text-right">
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#" class="nav-item">About</a>
+            <a href="#" class="nav-item">Services</a>
+            <a href="#" class="nav-item">Clients</a>
+            <a href="#" class="nav-item">Contact</a>
+            <a href="signup.html" class="nav-item d-md-none">Sign up</a>
+            <a class="nav-item d-md-none" href="login.html">Login</a>
+          </div>
+          
+          <span class="d-flex justify-content-end align-items-center" style="font-size:30px;cursor:pointer" onclick="openNav()"><img class="hamburder-bars mx-4 mx-md-3" src="../images/nav-icons/hamburger-bars.png" alt=""></span>
+        </div>
+      </div>
+      
+    </div>
+  </header>
+  
+
+  <section class="form-area bg-white py-5">
+    <div class="container">
+        <div class="form-title">
+            <p class="banner-title">Contact Us</p>
+            <h2>For any enquiries, or just to say hello.</h2>
+        </div>
+        <div class="form-area-wrap pt-5">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="contact-info-holder">
+                        <h2>iGurd Inc.</h2>
+                        <p class="contact-office">Unit 12F, House 612A, Road 32, Sector 5, <br>Bongshal, Dhaka-1230, Bangladesh</p>
+                        <p class="contact-email"><b>Email: </b>hello@raybim.com</p>
+                        <p class="contact-phone"><b>Phone: </b>+8801534270863</p>
+                        
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.096063842328!2d91.40000281450807!3d23.020244784954258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753684a8a977413%3A0xf08c98ebb12760e8!2z4Ka24Ka54KeA4KamIOCmuOCmvuCmsuCmvuCmriDgprjgp43gpp_gp4fgpqHgpr_gpq_gprzgpr7gpq4sIOCmq-Cnh-CmqOCngA!5e0!3m2!1sbn!2sbd!4v1594073089679!5m2!1sbn!2sbd" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="contact-form">
+                        <form action="" method="post" class="hform">
+                            <fieldset>
+                                <p class="name form-label">Name *</p>
+                                <input type="text" name="name" value="" id="name" placeholder="What's your name?" required>
+                                <div class="underline"></div>
+                                <p class="email form-label">Email *</p>
+                                <input type="email" name="email" value="" id="email" placeholder="What's your email?" required>
+                                <div class="underline"></div>
+                                <p class="phone form-label">Phone</p>
+                                <input type="tel" name="phone" value="" id="phone" placeholder="Do you have a phone number?">
+                                <div class="underline"></div>
+                                <p class="message form-label">Message</p>
+                                <textarea name="comment" rows="6" cols="40" placeholder="Say something here..."></textarea> 
+                                <div class="underline"></div>
+                            </fieldset>
+                            <input type="submit" name="submit" value="Send" class="button" id="button">
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+  
+  <footer class="pt-5 pb-3">
+    <div class="container-fluid px-2 px-md-5 pb-5">
+      <div class="footer-wrap px-4">
+        <div class="row align-items-center">
+          <div class="col-sm-6 col-lg-4">
+            <img class="white-logo d-block" src="../images/white-logo.png" alt="">
+            <p class="m-0 py-4 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+          </div>
+          <div class="col-6 col-sm-3 col-md-3 col-lg-2 text-lg-center py-2">
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Service</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Terms</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-sm-3 col-md-3 col-lg-2 text-lg-center py-2">
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Service</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Terms</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-4 py-3 d-none d-lg-block">
+            <div class="payment-partner-icons">
+              <img class="w-100 mx-auto d-block px-3" src="../images/payment.png" alt="">
+              <img class="w-100 mx-auto d-block px-3" src="../images/payment.png" alt="">
+              <img class="w-100 mx-auto d-block px-3" src="../images/payment.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-12 pt-2 text-center footer-copyright d-flex justify-content-md-end justify-content-center">
+      <p class="m-0 text-white pt-2">© iGurd 2020. All Right Reserved.</p>
+    </div>
+  </footer>
+
+
+
+  <!-- JS Global Compulsory -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>

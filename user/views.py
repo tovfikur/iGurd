@@ -32,7 +32,7 @@ class UserCreateView(generics.CreateAPIView):
         temp_user_obj = UserDetails.objects.filter(Phone=serializer.data['Phone'])
         temp_wallet_obj = WalletDetails.objects.create(userId=temp_user_obj[0],Cash=0,TotalTransfer=0,TotalWithdraw=0)
         temp_wallet_obj.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response({"Created":"Success"}, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class UserUpdateView(generics.RetrieveUpdateAPIView):

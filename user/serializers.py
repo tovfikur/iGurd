@@ -5,12 +5,12 @@ class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserDetails
 		fields = [
-			'First name',
-			'Last name',
+			'FullName',
 			'District',
-			'Upzila',
+			'Street',
+			'City',
+			'zip',
 			'Phone',
-			# 'Email',
 			'Password'
 		]
 

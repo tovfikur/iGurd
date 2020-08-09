@@ -3,10 +3,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 class UserDetails(models.Model):
-    Fname   	= models.CharField(default=None,max_length=20,name='First name')
-    Lname		= models.CharField(default=None,max_length=20,name='Last name')
-    District	= models.CharField(default=None,max_length=10)
-    Upzila		= models.CharField(default=None,max_length=10)
+    FullName   	= models.CharField(default=None,max_length=20)
+    District	= models.CharField(default=None,max_length=20)
+    Street		= models.CharField(default=None,max_length=20)
+    City	    = models.CharField(default=None,max_length=10)
+    zip		    = models.IntegerField(default=6660)
     Phone		= PhoneNumberField(default='+8801796693300',unique=True)
     # Email       =models.CharField(null=True,max_length=50,blank=True,unique=True)
     ACT			= models.BooleanField(default=True)
