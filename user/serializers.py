@@ -1,6 +1,18 @@
 from rest_framework import serializers
 from .models import UserDetails
 
+class UserRetriveSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = UserDetails
+		fields = [
+			'FullName',
+			'District',
+			'Street',
+			'City',
+			'zip',
+			'Phone',
+		]
+
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserDetails

@@ -7,9 +7,9 @@ from rest_framework.response import Response
 from .login import check_token
 # Create your views here.
 
-from .models import UserDetails, UserToken
+from .models import UserDetails, UserToken, ErrorHandeler
 from wallet.models import WalletDetails
-from .serializers import UserSerializer, UserUpdateSerialiser, LoginSerializer
+from .serializers import UserSerializer, UserUpdateSerialiser, LoginSerializer, UserRetriveSerializer
 
 
 def encrypt(message: bytes, key: bytes) -> bytes:
@@ -87,3 +87,17 @@ class LoginView(APIView):
         except:
             print('not sending token')
         return  Response({'login':"Doesn't responding"})
+
+
+class UserApi(generics.RetrieveAPIView):
+    # queryset = UserDetails.objects.all()
+    def get_queryset(self):
+        try:
+            token = self.request.META['HTTP_TOKEN']
+            token_obj = UserToken.objects.filter(token=token).first().user.id
+            obj = UserDetails.objects.filter(id=token_obj)
+            return obj
+        except Exception as e:
+            return UserDetails.objects.filter(id=0)
+    serializer_class = UserRetriveSerializer
+    lookup_field = "Phone"
