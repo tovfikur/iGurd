@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from .login import check_token
 # Create your views here.
 
-from .models import UserDetails, UserToken, ErrorHandeler
+from .models import UserDetails, UserToken
 from wallet.models import WalletDetails
 from .serializers import UserSerializer, UserUpdateSerialiser, LoginSerializer, UserRetriveSerializer
 
