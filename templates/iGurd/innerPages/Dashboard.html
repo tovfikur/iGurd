@@ -441,6 +441,21 @@
 	         });
 	       });
 	</script>
+
+
+  <script>
+      window.onload = () => {
+          $.ajax({
+              url: '/user/+8801736614143',
+              headers: { 'token': $.cookie('token') },
+              success: (data) =>{
+                  alert('working');
+              }
+          })
+      }
+  </script>
+
+
 <style>
     /* Fonts */
 

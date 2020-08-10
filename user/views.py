@@ -100,4 +100,4 @@ class UserApi(generics.RetrieveAPIView):
         except Exception as e:
             return UserDetails.objects.filter(id=0)
     serializer_class = UserRetriveSerializer
-    lookup_field = "Phone"
+    lookup_field = "ACT"
