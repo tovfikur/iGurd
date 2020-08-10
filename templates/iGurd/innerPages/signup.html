@@ -1175,8 +1175,9 @@ $('#signup-next').click( function() {
         success: function(data) {
                    window.location.replace("/login");
                  },
-        fail : function (data) {
-            console.log(data.response);
+        error : function (data) {
+           alert('do it again')
+            console.log(data)
         }
     });
 });
