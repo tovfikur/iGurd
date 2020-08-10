@@ -4,11 +4,13 @@ from django.core import serializers
 from rest_framework import generics, views, status
 from rest_framework.response import Response
 from user.login import check_token
+from django.db.models import Q
 # Create your views here.
 
 from .models import Cash,Transaction
 from wallet.models import WalletDetails
 from .serializers import CashInSerializer, TransectionSerializer
+from user.models import UserDetails,UserToken
 
 
 class CashInView(generics.CreateAPIView):
@@ -108,6 +110,19 @@ class AddMeView(views.APIView):
             print(e)
             return Response({'error':str(e)})
         return Response({'Code':'Added'})
+
+
+class MyPayments(generics.ListAPIView):
+    serializer_class = TransectionSerializer
+
+    def get_queryset(self):
+        try:
+            token = self.request.META['HTTP_TOKEN']
+            token_obj = UserToken.objects.filter(token=token).first().user.id
+            obj = Transaction.objects.filter(Q(BuyerWalletId=token_obj) | Q(SellerWalletId=token_obj))
+            return obj
+        except Exception as e:
+            return Transaction.objects.filter(id=0)
 
 
 class Pay(views.APIView):
