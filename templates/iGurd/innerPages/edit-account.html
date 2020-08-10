@@ -1,47 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<title>Edit Profile - iGurd</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/theme.css" rel="stylesheet">
-	<link href="css/innerMaster.css" rel="stylesheet">
+	<link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+	<link href="{% static 'css/theme.css'%}" rel="stylesheet">
+	<link href="{% static 'css/innerMaster.css'%}" rel="stylesheet">
 </head>
 <body>
 	<header class="innerNav d-flex align-items-center bg-white flex-wrap">
 		<div class="container">
 			<nav class="d-flex justify-content-between align-items-center">
 				<div>
-					<a href="Dashboard.html"><img alt="iGurd Logo" class="logo" src="../images/innerLogo.png"></a>
+					<a href="Dashboard.html"><img alt="iGurd Logo" class="logo" src="{% static 'css/images/innerLogo.png' %}"></a>
 				</div>
 				<div class="right-nav">
 					<div class="nav-links d-flex d-block justify-content-between align-items-center">
-						<a class="single-tab" href="Dashboard.html"><img alt="" src="../images/nav-icons/home.png"></a> <!-- Unfold (Dropdown) -->
+						<a class="single-tab" href="Dashboard.html"><img alt="" src="{% static 'css/images/nav-icons/home.png' %}"></a> <!-- Unfold (Dropdown) -->
 						<div class="hs-unfold">
-							<a class="js-hs-unfold-invoker dropdown-toggle single-tab" data-hs-unfold-options='{ "target": "#dropdownWithHref", "type": "css-animation", "animationIn": "fadeInUp", "animationOut": "fadeOutDown", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="../images/nav-icons/notification.png"></a>
+							<a class="js-hs-unfold-invoker dropdown-toggle single-tab" data-hs-unfold-options='{ "target": "#dropdownWithHref", "type": "css-animation", "animationIn": "fadeInUp", "animationOut": "fadeOutDown", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/notification.png' %}"></a>
 							<div class="hs-unfold-content dropdown-menu notification-area" id="dropdownWithHref">
 								<div class="single-notice-wrap">
 									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="../images/nav-icons/user.png">
+										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
 										<div class="notification-text">
 											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
 										</div>
 									</div>
 									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="../images/nav-icons/user.png">
+										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
 										<div class="notification-text">
 											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
 										</div>
 									</div>
 									<div class="single-notification-area system-notice dropdown-item" id="single-notification">
-										<img alt="" src="../images/nav-icons/system.png">
+										<img alt="" src="{% static 'css/images/nav-icons/system.png' %}">
 										<div class="notification-text">
 											<p>System invited you to pay the escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
 										</div>
 									</div>
 									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="../images/nav-icons/user.png">
+										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
 										<div class="notification-text">
 											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
 										</div>
@@ -51,7 +52,7 @@
 						</div><!-- End Unfold (Dropdown) -->
 						<!-- Unfold (Sidebar) -->
 						<div class="hs-unfold">
-							<a class="single-tab js-hs-unfold-invoker active" data-hs-unfold-options='{ "target": "#sidebarContent", "type": "css-animation", "animationIn": "fadeInRight", "animationOut": "fadeOutRight", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="../images/nav-icons/hamburger-bars.png"></a>
+							<a class="single-tab js-hs-unfold-invoker active" data-hs-unfold-options='{ "target": "#sidebarContent", "type": "css-animation", "animationIn": "fadeInRight", "animationOut": "fadeOutRight", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/hamburger-bars.png' %}"></a>
 						</div><!-- End Unfold (Sidebar) -->
 					</div>
 				</div>
@@ -144,13 +145,13 @@
 						<div class="sidebar-content">
 							<div class="side-nav-w-icons p-4">
 								<div class="side-dashboard d-flex align-items-center p-2">
-									<img alt="" class="" src="../images/nav-icons/home.png"> <a href="Dashboard.html">Dashboard</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="Dashboard.html">Dashboard</a>
 								</div>
 								<div class="side-profile d-flex align-items-center p-2">
-									<img alt="" class="" src="../images/nav-icons/profile.png"> <a href="edit-account.html">Profile</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="edit-account.html">Profile</a>
 								</div>
 								<div class="side-wallet d-flex align-items-center p-2">
-									<img alt="" class="" src="../images/nav-icons/wallet.png"> <span class="side-wallet-text d-block"><a href="#">Wallet</a> <small class="d-block">Your balance <span id="side-wallet-balance">0.00</span> BDT</small></span>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/wallet.png' %}"> <span class="side-wallet-text d-block"><a href="#">Wallet</a> <small class="d-block">Your balance <span id="side-wallet-balance">0.00</span> BDT</small></span>
 								</div>
 							</div>
 							<div class="side-escrow-section p-4">
@@ -160,7 +161,7 @@
 								<a href="#">Help & FAQ</a> <a href="#">Contact support</a> <a href="#">About us</a>
 							</div>
 							<div class="log-out-sec d-flex justify-content-center px-3">
-								<a class="log-out-btn d-flex align-items-center justify-content-center" href="#"><img alt="" src="../images/nav-icons/log-out.png">
+								<a class="log-out-btn d-flex align-items-center justify-content-center" href="#"><img alt="" src="{% static 'css/images/nav-icons/log-out.png' %}">
 								<p class="m-0 text-white">Log Out</p></a>
 							</div>
 						</div>
@@ -175,9 +176,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="ChangePassModalTitle">Change Password</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body">
 					<form>
@@ -204,9 +205,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="ChangePassModalTitle">Change Password</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body text-center">
 					<div class="password-changed-text">
@@ -230,9 +231,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="ChangePassModalTitle">Delete My Account</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body">
 					<div class="delete-account-text">
@@ -258,9 +259,9 @@
 			<div class="modal-content text-center">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="ChangePassModalTitle">Delete My Account</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body">
 					<div class="delete-account-text">
@@ -285,9 +286,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="AccountVerifyModalTitle">Verify Your Account</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body account-verify-body">
 					<div class="account-verify-text">
@@ -299,7 +300,7 @@
 							<div class="js-dropzone dz-dropzone dz-dropzone-boxed gradient-overlay-half-primary-v4" id="verificationDrop">
 								<div class="dz-message pt-3">
 									<figure class="max-w-10rem mx-auto mb-3">
-										<img alt="Image Description" class="img-fluid" src="../images/dashboard/dropzone.png">
+										<img alt="Image Description" class="img-fluid" src="{% static 'css/images/dashboard/dropzone.png' %}">
 									</figure>
 								</div>
 							</div>
@@ -321,9 +322,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="AccountVerifyModalTitle">Verify Your Account</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body text-center verify-account-confirm-body">
 					<div class="verify-account-confirmed-text">
@@ -348,9 +349,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="createEscrowModalTitle">Create Escrow Payment</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body">
 					<form class="createEscrowModalForm">
@@ -395,7 +396,7 @@
 								<div class="js-dropzone dz-dropzone dz-dropzone-boxed gradient-overlay-half-primary-v4" id="escrowDropzone">
 									<div class="dz-message mt-4 mt-md-2">
 										<figure class="max-w-4rem mx-auto mb-2">
-											<img alt="Image Description" class="img-fluid" src="../images/dashboard/dropzone.png">
+											<img alt="Image Description" class="img-fluid" src="{% static 'css/images/dashboard/dropzone.png' %}">
 										</figure>
 										<p class="m-0">Drop image here (Max. 2MB per image, max. 5 image)</p>
 									</div>
@@ -462,9 +463,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="invitePartnerModalTitle">Invite Business Partner</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body text-center invite-partner-body">
 					<div class="invite-partner-body-text pb-3 pt-2">
@@ -473,7 +474,7 @@
 						</div>
 						<div class="invite-partner-link" id="invite-partner-link">
 							<p class="share-link" id="share-link">https://secure.igurd.com/links/0720OIAP?icc=0720OIAP&lang=en</p>
-							<p class="copy-btn"><img alt="" src="../images/dashboard/copy-btn.png">Copy Link</p>
+							<p class="copy-btn"><img alt="" src="{% static 'css/images/dashboard/copy-btn.png' %}">Copy Link</p>
 						</div>
 					</div>
 					<div class="modal-footer invite-partner-confirmed-footer">
@@ -489,9 +490,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="addWalletMoneyModalTitle">Recharge Your Wallet</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body">
 					<form class="addWalletMoneyModalForm">
@@ -526,9 +527,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="modal-title-area">
-						<img alt="" src="../images/dashboard/change-pass.png">
+						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
 						<h5 class="modal-title" id="rechargeWalletModalTitle">Recharge Your Wallet</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="../images/dashboard/close.png"></button>
+					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body text-center recharge-wallet-body">
 					<div class="recharge-Wallet-body-text pb-3 pt-2">
@@ -544,19 +545,19 @@
 		</div>
 	</div><!-- ======== Add Money Confirmation Modal Ends ======= -->
 	<!-- JS Global Compulsory -->
-	<script src="js/jquery.min.js">
+	<script src="{% static 'js/jquery.min.js '%}">
 	</script> 
-	<script src="js/jquery-migrate.min.js">
+	<script src="{% static 'js/jquery-migrate.min.js '%}">
 	</script> 
-	<script src="js/bootstrap.bundle.min.js">
+	<script src="{% static 'js/bootstrap.bundle.min.js '%}">
 	</script> 
-	<script src="js/dropzone.min.js">
+	<script src="{% static 'js/dropzone.min.js '%}">
 	</script> 
-	<script src="js/hs.core.js">
+	<script src="{% static 'js/hs.core.js '%}">
 	</script> 
-	<script src="js/hs-unfold.min.js">
+	<script src="{% static 'js/hs-unfold.min.js '%}">
 	</script> 
-	<script src="js/hs.dropzone.js">
+	<script src="{% static 'js/hs.dropzone.js '%}">
 	</script> 
 	<script>
 	       $(document).on('ready', function () {
@@ -576,5 +577,1206 @@
 	         });
 	       });
 	</script>
+<style>
+    /* Fonts */
+
+@font-face {
+	font-family: 'Roboto';
+	src: url({% static 'Fonts/Roboto-Regular.woff2' %}) format('woff2'), url({% static 'Fonts/Roboto-Regular.woff' %}) format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url({% static 'Fonts/Montserrat-Bold.woff2' %}) format('woff2'), url({% static 'Fonts/Montserrat-Bold.woff' %}) format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url({% static 'Fonts/Montserrat-SemiBold.woff2' %}) format('woff2'), url({% static 'Fonts/Montserrat-SemiBold.woff' %}) format('woff');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url({% static 'Fonts/Montserrat-Regular.woff2' %}) format('woff2'), url({% static 'Fonts/Montserrat-Regular.woff' %}) format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Myriad Pro';
+	src: url({% static 'Fonts/MyriadPro-Regular.woff2' %}) format('woff2'), url({% static 'Fonts/MyriadPro-Regular.woff' %}) format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url({% static 'Fonts/Montserrat-Light.woff2' %}) format('woff2'), url({% static 'Fonts/Montserrat-Light.woff' %}) format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url({% static 'Fonts/Montserrat-Medium.woff2' %}) format('woff2'), url({% static 'Fonts/Montserrat-Medium.woff' %}) format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #000000;
+	font-size: 16px;
+	transition: .3s ease-in-out;
+}
+body {
+	background-color: #fff;
+	font-family: 'Montserrat';
+}
+@media (min-width: 1200px) {
+	.container {
+		max-width: 970px;
+	}
+}
+body {
+	position: relative;
+}
+a:hover {
+	text-decoration: none;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #000;
+}
+.modal-backdrop {
+	background-color: RGBA(6, 8, 8, .4);
+}
+/* Nav Section Starts Here */
+
+.innerNav {
+	height: 60px;
+}
+.logo {
+	height: 40px;
+}
+a.single-tab {
+	padding: 15px 20px;
+	border-bottom: 2px solid transparent;
+	transition: .3s ease-in-out;
+	display: inline-block;
+}
+a.single-tab.active {
+	padding: 15px 20px;
+	border-bottom: 2px solid #002B49;
+}
+a.single-tab img {
+	height: 25px;
+}
+a.single-tab:hover, a.single-tab:focus {
+	border-bottom: 2px solid #002B49;
+}
+.right-nav .nav-links a {
+	cursor: pointer;
+}
+/* Notification Dropdown Starts Here */
+
+.dropdown-toggle::after {
+	display: none;
+}
+.dropdown-menu {
+	box-shadow: none;
+	border: none;
+	top: 90%;
+	color: #000000;
+	width: 290px;
+	min-width: 11rem;
+	left: -200px;
+	border-radius: 7px;
+	padding: 10px 0;
+	overflow-y: hidden;
+}
+.dropdown-menu.show {
+	left: -170px !important;
+	width: 290px;
+}
+.dropdown-item {
+	white-space: pre-line;
+	padding: 0.375rem 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.dropdown-item img {
+	width: 35px;
+}
+.notification-text p {
+	font-size: 14px;
+	margin: 0;
+	line-height: 18px;
+}
+.notification-text small, .notification-text small span {
+	font-size: 12px;
+	line-height: 0;
+	padding-top: 2px;
+	display: block;
+	text-align: right;
+}
+.notification-text small span {
+	display: inline;
+}
+.notification-text {
+	padding-left: 10px;
+	line-height: 7px;
+}
+.notification-text a {
+	color: #002B49;
+	font-size: 14px;
+}
+.single-notice-wrap {
+	margin: 0 5px;
+}
+/* Notification Dropdown Ends Here */
+
+/* Sidebar Starts Here */
+
+.sidebar-footer-offset {
+	padding: 0 !important;
+}
+.hs-unfold-overlay {
+	background-color: RGBA(6, 8, 8, .4);
+}
+.sidebar {
+	top: 0;
+	width: 17rem;
+}
+.sidebar-content img {
+	width: 40px;
+	padding-right: 15px;
+}
+.sidebar-content a {
+	color: #000;
+	font-weight: 500;
+}
+span.side-wallet-text small, span.side-wallet-text small span {
+	font-size: 13px;
+}
+span.side-wallet-text a, span.side-wallet-text small {
+	line-height: 0;
+}
+.side-other-menu a, .side-escrow-section a {
+	display: block;
+	padding: 5px;
+}
+header.innerNav {
+	z-index: 1111 !important;
+	position: relative;
+}
+.side-escrow-section {
+	border-top: 2px solid #A0A0A0;
+	border-bottom: 2px solid #A0A0A0;
+}
+.log-out-sec a {
+	display: inline-block;
+	background: #002B49;
+	padding: 10px 25px;
+	width: 100%;
+	color: #fff;
+	border-radius: 7px;
+}
+.process-footer p {
+	padding: 15px;
+	padding-bottom: 0;
+}
+/* Sidebar Ends Here */
+
+/* Footer  */
+
+.footer-list ul li a {
+	color: #000000;
+	font-weight: 500;
+}
+.footer-list ul li {
+	display: inline-block;
+}
+.footer-list ul {
+	margin: 0px 30px;
+	border-top: 2px solid #002B49;
+	padding: 18px 0;
+}
+/* ========== Dashboard Area Starts from here ========= */
+
+main {
+	background: #F5F5F5;
+	min-height: 600px;
+}
+footer {
+	background: transparent;
+}
+body {
+	padding: 0 !important;
+	margin: 0;
+}
+.modal-open {
+	overflow: auto;
+	padding-right: 0 !important;
+}
+/* ======== Main Dashboard Page Starts Here ========= */
+
+.card-image {
+	max-width: 95px;
+	margin: 0 auto;
+}
+.card-title {
+	color: #000000;
+}
+.single-dashboard-card {
+	padding: 15px 0;
+}
+.user-name-dashboard {
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 10px;
+	text-transform: capitalize;
+}
+.card-text {
+	font-size: 15px;
+	font-weight: 400;
+	color: #000000;
+}
+.card-title {
+	color: #000000;
+	font-weight: 600;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.card-body {
+	padding-bottom: .75rem;
+}
+.card-footer {
+	padding: 0 15px;
+	border-top: none;
+}
+.card-footer a {
+	font-weight: 600;
+	font-size: 18px;
+	background: #002B49;
+	color: #fff;
+	width: 100%;
+	display: block;
+	border-radius: 7px;
+	padding: 8px 0;
+}
+.card-footer a:hover, .card-footer a:focus, .card-footer a:active {
+	background: RGBA(0, 43, 73, .9);
+}
+.escrow-area-title h4 {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 0rem;
+}
+.single-ongoing-escrow {
+	display: flex;
+	background: #fff;
+	padding: 15px;
+	border-radius: 7px;
+	margin: 15px 0;
+	justify-content: space-between;
+	align-items: center;
+}
+.escrow-creation-time, .escrow-creation-time span {
+	font-size: 14px;
+}
+.escrow-amount {
+	font-size: 18px;
+	font-weight: 600;
+}
+.escrow-wrap {
+	margin-bottom: 30px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 310px;
+}
+.escrow-wrap::-webkit-scrollbar {
+	display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.escrow-wrap {
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+}
+/* ======== Main Dashboard Page Ends Here ========= */
+
+/* Join as a Partner Page Starts */
+
+main.main-area.join-as-a-partner {
+	background: url("{% static 'css/images/join-as-partner-bg.png' %}");
+	background-color: #E8EAEE;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+h2.title {
+	font-size: 22px;
+	font-weight: 600;
+}
+.join-partner-left-text, .join-partner-right-text {
+	border-radius: 7px;
+}
+.invitation-message {
+	border: 2px solid #1D2E5C;
+	border-radius: 7px;
+}
+.invitation-message p {
+	margin: 0;
+	padding: 0;
+	color: #293250;
+	font-weight: 600;
+}
+span#sender-name {
+	font-size: 18px;
+	color: #293250;
+	font-weight: 600;
+}
+small, #transaction-id {
+	font-size: 14px;
+	font-weight: 500;
+	color: #666666;
+}
+.join-partner-escrow-title-area h6 {
+	color: #666666;
+	font-size: 16px;
+	font-weight: 500;
+}
+.join-partner-escrow-title-area .escrow-title h4 {
+	font-weight: 600;
+	font-size: 20px;
+	margin: 0;
+}
+.join-partner-escrow-title-area .escrow-title a {
+	color: #293250;
+	font-size: 14px;
+	font-weight: 500;
+}
+.grey-text {
+	font-size: 16px;
+	font-weight: 500;
+	color: #666666;
+}
+.black-text {
+	font-size: 18px;
+	font-weight: 500;
+}
+.escrow-buyer-fees, .escrow-invited-by, .escrow-your-fees {
+	margin: 0;
+	font-size: 14px;
+}
+.escrow-body-you-pay {
+	padding-top: 1rem;
+}
+.escrow-you-pay {
+	margin: 0;
+}
+.accept-btn {
+	font-size: 18px;
+	font-weight: 600;
+	border: none;
+	background: #293250;
+	color: #fff;
+	width: 100%;
+	padding: 10px;
+	border-radius: 7px;
+	border: 1px solid #293250;
+	transition: .3s ease-in-out;
+}
+.escrow-btns {
+	padding-top: 25px;
+}
+.accept-btn:focus, .accept-btn:active {
+	outline: none;
+}
+.accept-btn:hover {
+	background: RGBA(41, 50, 80, .95);
+}
+.escrow-negetive-btns a {
+	font-size: 18px;
+	font-weight: 600;
+	color: #293250;
+	padding: 10px 0;
+	display: inline-block;
+}
+.process-img img {
+	width: 70px;
+	padding: 15px;
+}
+.process-img {
+	border: 1px solid #231F20;
+	display: inline-block;
+	border-radius: 50%;
+}
+.single-process {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 14px 0;
+}
+.process-body p {
+	padding-left: 20px;
+	margin: 0;
+	color: #7F8496;
+}
+.process-footer p {
+	padding: 15px;
+	padding-bottom: 0;
+}
+/* Login Modal  */
+
+#loginFormModal .modal-header img {
+	width: 12px;
+}
+#loginFormModal .modal-header {
+	padding: 0 1rem;
+	background: #fff;
+}
+#loginFormModal .modal-dialog {
+	padding-bottom: 1rem;
+	margin: 0 auto;
+}
+#loginFormModal .modal-title-area {
+	margin: 0 auto;
+}
+.loginFormModalHeader .modal-title-area h5 {
+	font-size: 20px;
+	font-weight: 600;
+	display: inline-block;
+	padding: 15px 35px;
+	border-bottom: 2px solid #E1E1E1;
+	margin-left: 10px;
+}
+#loginFormModal .modal-body {
+	padding: 2rem;
+	padding-bottom: 0;
+}
+#loginFormModal .form-group input {
+	text-align: center;
+	letter-spacing: 1px;
+	height: 40px;
+	font-weight: 500;
+	font-size: 16px;
+}
+#loginFormModal .modal-footer {
+	margin: 0;
+	padding: 0 1rem;
+	border: none;
+}
+#loginFormModal .modal-footer button {
+	background: #293250;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 8px;
+}
+.modal-footer button:hover, .modal-footer button:focus, .modal-footer button:active {
+	background: RGBA(41, 50, 80, .95);
+}
+.below-modal-footer-links a, .below-modal-footer-links small {
+	font-size: 12px;
+	font-weight: 400;
+	color: #505050;
+}
+/* Join as a Partner Page Ends */
+
+/* ======== Create Escrow Area Starts ======== */
+
+.form-group label, .dropzone label {
+	font-size: 14px;
+}
+.modal-body {
+	padding-top: 1rem;
+}
+.createEscrowModalForm .form-control {
+	border: 1.2px solid #002B49;
+	font-size: 14px;
+	font-weight: 400;
+	height: 40px;
+	padding: 9px;
+	padding-left: 14px;
+}
+.createEscrowModalForm .form-control option, .form-control option {
+	outline: none;
+	border: none;
+}
+.description-dropzone-area {
+	display: flex;
+	justify-content: space-between;
+}
+.createEscrowModalForm .form-group.description {
+	width: 59%;
+}
+.description-dropzone-area .dropzone {
+	width: 39%;
+}
+.createEscrowModalForm .form-group {
+	margin-bottom: .5rem;
+}
+form.createEscrowModalForm .dz-message p {
+	font-size: 10px;
+}
+@media only screen and (max-width: 576px) {
+	form.createEscrowModalForm .dz-message p {
+		display: none;
+	}
+}
+textarea#escrowDescription {
+	min-height: 80px;
+	height: 80px;
+}
+div#escrowDropzone {
+	border: 1.2px solid #002B49;
+	height: 80px;
+}
+input#escrowAmountField, input#addMoneyField {
+	border: none;
+	border-radius: 0;
+	font-size: 26px;
+	border-bottom: 2px solid #002B49;
+	font-weight: 500;
+	box-shadow: none;
+}
+.createEscrowModalForm input::-webkit-outer-spin-button, .createEscrowModalForm input::-webkit-inner-spin-button, input#addMoneyField::-webkit-outer-spin-button, input#addMoneyField::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.createEscrowModalForm input[type=number], input#addMoneyField {
+	-moz-appearance: textfield;
+}
+.createEscrowModalForm select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 1px;
+	text-overflow: '';
+}
+.radio-btn-header h4 {
+	font-size: 16px;
+	margin-bottom: 0;
+}
+.radio-btn-header p {
+	font-size: 13px;
+}
+.custom-control-label {
+	font-size: 14px;
+	font-weight: 500;
+}
+.custom-control-label::before {
+	border: 2px solid #002B49;
+}
+.custom-control-input:checked~.custom-control-label::before {
+	border-color: #002B49;
+	background-color: #002B49;
+}
+#createEscrowModal {
+	z-index: 1200;
+}
+.createEscrowPaymentDetails span p, .addMoneyDetails span p {
+	padding-right: 3px;
+	display: block;
+}
+.payment-details, .payment-details span, .payment-details span p, .addMoneyDetails, .addMoneyDetails span, .addMoneyDetails span p {
+	font-size: 14px !important;
+	color: #000;
+}
+.toPayTotal p, .toPayTotal span, .toPayTotal span p {
+	font-size: 18px !important;
+	font-weight: 500;
+}
+.coupon-area a {
+	color: #000;
+	font-size: 14px;
+	padding: 5px 0;
+	display: block;
+}
+.card.card-body.coupon-body {
+	padding: 0;
+}
+button.coupon-apply-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 40px;
+	border-radius: 0px 7px 7px 0px;
+	background: #002B49;
+	color: #fff;
+	border: none;
+	width: 80px;
+	font-weight: 500;
+}
+.createEscrowModalForm .form-control input {
+	border: 1.2px solid #002B49;
+	font-size: 14px;
+	font-weight: 400;
+	height: 40px;
+	padding: 10px;
+	padding-left: 14px;
+	border-radius: 7px;
+}
+.card.card-body.coupon-body button:hover, .card.card-body.coupon-body button:focus, .card.card-body.coupon-body button:active {
+	background: RGBA(0, 43, 73, .9);
+}
+.createEscrowFooterNext-btn, .addMoneyFooter-btn {
+	font-weight: 600;
+	font-size: 18px;
+	background: #002B49;
+	color: #fff;
+	width: 100%;
+	display: block;
+	border-radius: 7px;
+	padding: 8px 0;
+}
+.createEscrowFooterNext-btn:hover, .createEscrowFooterNext-btn:focus, .createEscrowFooterNext-btn:active, .addMoneyFooter-btn:hover, .addMoneyFooter-btn:focus, .addMoneyFooter-btn:active {
+	background: RGBA(0, 43, 73, .9);
+	color: #fff;
+}
+div#invite-partner-link {
+	display: flex;
+	flex-direction: column;
+}
+div#invite-partner-link textarea {
+	text-align: center;
+	border: none;
+}
+a.copy-btn img {
+	width: 20px;
+	margin: 0 10px;
+	display: inline-block;
+}
+div#invite-partner-link img {
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+	margin: 0 10px;
+}
+a#invite-partner-close {
+	font-size: 16px;
+	font-weight: 900;
+	color: #002B49;
+}
+p.copy-btn {
+	font-size: 18px;
+	font-weight: 500;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+p#share-link {
+	font-size: 16px;
+	overflow-wrap: anywhere;
+}
+.invite-partner-confirmed p, .recharge-wallet-confirmed p {
+	font-size: 18px;
+	font-weight: 600;
+}
+/* ======== Create Escrow Area Ends ======== */
+
+/* ======== Edit Account Page Starts Here =========  */
+
+h3.edit-account-title {
+	font-size: 16px;
+	font-weight: 400;
+}
+.single-profile-area h4 {
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #808080;
+	letter-spacing: .75px;
+	margin-bottom: 0.25rem;
+}
+.single-profile-area p, .single-profile-area a {
+	color: #293250;
+	font-size: 18px;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+}
+.left-side-wrapper, .right-side-wrapper {
+	border-radius: 7px;
+	padding: 10px 0;
+}
+.single-profile-area {
+	padding: 20px 30px;
+	border-bottom: 2px solid #D9D9D9;
+}
+.account-deletation-area.single-profile-area {
+	border: none;
+}
+a.delete-account, .change-password {
+	color: #FF0000 !important;
+}
+.delete-account-text textarea {
+	min-height: 100px;
+}
+.modal-footer.deleteEscrowFooter {
+	padding: 0 2rem;
+}
+.file-upload-area a.btn {
+	background: #002B49;
+	color: #fff;
+	padding: 10px 25px;
+	font-size: 16px;
+	font-weight: 600;
+	margin: 10px 0;
+}
+.file-upload-area a.btn:hover, .file-upload-area a.btn:focus, .file-upload-area a.btn:active {
+	background: RGBA(0, 43, 73, .9);
+}
+.file-upload-area {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.identity-proof-area.single-profile-area {
+	border-bottom: none;
+}
+p.file-upload-notice {
+	font-size: 12px;
+	font-weight: 400;
+	color: #000;
+	padding: 20px 0;
+}
+.security-area.single-profile-area {
+	overflow: hidden;
+	border: none;
+	min-height: 175px;
+}
+.modal-title-area img {
+	max-width: 19px;
+	margin: 0 10px;
+	height: 25px;
+}
+.modal-title-area {
+	display: flex;
+	margin: 0 auto;
+}
+.modal-title {
+	font-size: 18px;
+	font-weight: 600;
+	color: #002B49;
+}
+.modal-header {
+	padding: 1rem;
+	background: #E5E5E5;
+}
+.modal-header button img {
+	width: 18px;
+}
+.form-control {
+	border: 1px solid #002B49;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+.modal-footer {
+	justify-content: center;
+	padding: 0 4rem;
+	border: none;
+	border-radius: 7px;
+}
+.modal-footer button {
+	width: 100%;
+	background: RGBA(0, 43, 73, 1);
+}
+.modal-footer button:hover, .modal-footer button:focus, .modal-footer button:active {
+	background: RGBA(0, 43, 73, .9);
+	box-shadow: none;
+}
+.modal-dialog {
+	max-width: 450px;
+}
+.form-group label, .dropzone label {
+	font-size: 14px;
+}
+.password-changed-text {
+	font-size: 18px;
+}
+.new-password-instruction p {
+	padding: 15px;
+}
+.delete-account-text p, .account-delete-confirmation p {
+	font-size: 15px;
+}
+.account-delete-confirmation p {
+	font-weight: 500;
+}
+.dz-dropzone-boxed {
+	padding: 0rem;
+}
+.account-verify-footer, .account-verify-confirmed-footer {
+	padding: 0 4rem;
+}
+.account-delete-confirmation p, .verify-account-confirmed p {
+	font-weight: 500;
+	font-size: 15px;
+	padding-bottom: 0;
+	display: block;
+}
+.verify-account-instructions p {
+	font-size: 15px;
+}
+/* ======== Edit Account Page Ends Here =========  */
+
+/* ======== Inside Escrow Page Starts Here =========  */
+
+.left-text, .right-text {
+	border-radius: 7px;
+}
+p.left-header-title {
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 5px;
+	margin: 0;
+	border-bottom: 1px solid #668092;
+}
+.invitation-message {
+	border: 2px solid #002B49;
+	border-radius: 7px;
+}
+.invitation-message p {
+	font-size: 18px;
+	font-weight: 500;
+}
+.invitation-message a {
+	font-size: 14px;
+	font-weight: 500;
+	color: #000;
+}
+small.transaction-code, small.transaction-code span, small.transaction-date, small.transaction-date span, span#transaction-time {
+	font-size: 14px;
+	font-weight: 500;
+	color: #666666;
+}
+a.step-by-step-link img {
+	height: 18px;
+	width: 18px;
+	margin-right: 10px;
+}
+a.step-by-step-link, a.fee-info-link {
+	color: #000;
+	padding: 5px 0;
+	font-size: 13px;
+	font-weight: 500;
+}
+.invite-partner-btn {
+	background: #002B49;
+	color: #fff;
+}
+.invite-partner-btn:hover, .invite-partner-btn:focus, .invite-partner-btn:active {
+	background: RGBA(0, 43, 73, .9);
+	color: #fff;
+}
+.delete-escrow-btn {
+	color: #002B49;
+}
+@media (max-width: 767px) {
+	.step-md .step-icon::after {
+		border-left: 0.125rem solid #002A48;
+	}
+}
+span.step-icon {
+	border: 2px solid #002B49;
+}
+span.step-icon.active {
+	background: #002B49;
+}
+.step-content h4 {
+	margin: 0;
+}
+.step-icon-xs.step-icon::after {
+	top: 1.75rem;
+	left: 0.8125rem;
+	width: 1.0625rem;
+	height: calc(100% - 0.28125rem);
+}
+@media (min-width: 768px) {
+	.step-md.step-centered .step-icon.step-icon-xs::after {
+		width: calc(100% - -0.25rem);
+		left: calc(50% + 0.8125rem);
+	}
+	.step-md .step-icon {
+		margin-bottom: .5rem;
+	}
+	.step-md .step-icon::after {
+		border-top: 0.125rem solid #002A48;
+	}
+}
+.right-text.second-right img {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+}
+.right-text.second-right a {
+	font-size: 14px;
+	font-weight: 600;
+	color: #002B49;
+}
+.card.chat-box {
+	border-width: 0;
+	box-shadow: none;
+}
+.left-body {
+	padding-bottom: .3rem !important;
+}
+.chat-box img {
+	height: 31px;
+	width: 31px;
+	margin-right: 10px;
+}
+.message-text p, .your-message p, .partner-message p, .message-text p span {
+	font-size: 14px;
+	padding: 0;
+	line-height: 12px;
+	color: #fff;
+}
+.message-text small, .your-message small, .partner-message small {
+	font-size: 10px;
+	color: #fff;
+}
+.partner-message .message-text, .system-message .message-text {
+	background: #1F8FEF;
+	padding: 0 10px;
+	border-radius: 7px;
+	color: #fff !important;
+	margin: 5px 0;
+}
+.your-message .message-text {
+	background: #F1F0F0;
+	padding: 0 10px;
+	border-radius: 7px;
+	margin: 5px 10px;
+}
+.your-message p {
+	color: #000;
+}
+.your-message small {
+	color: #000;
+}
+.pay-now-btn {
+	background: #002B49;
+	color: #fff;
+	padding: 8px 20px;
+	margin: 5px 0;
+	font-size: 18px;
+	font-weight: 500;
+}
+.pay-now-btn:hover {
+	background: RGBA(0, 43, 73, .9);
+	color: #fff;
+}
+.pop-payment {
+    background: #002B49;
+    border: none;
+    box-shadow: none;
+}
+input#inputMessage {
+	height: 50px;
+	font-size: 14px;
+	font-weight: 400;
+	color: #000;
+	border-radius: 40px;
+}
+button img {
+	width: 25px;
+}
+.form-group button.chat-send-btn {
+	position: absolute;
+	right: -5px;
+	top: -3px;
+	margin: 0;
+}
+form .form-group {
+	position: relative;
+}
+.chat-box {
+	height: 200px;
+	overflow-y: scroll;
+}
+.chat-box {
+	--scrollbarBG: #fff;
+	--thumbBG: #808080;
+}
+.chat-box::-webkit-scrollbar {
+	width: 11px;
+}
+.chat-box {
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.chat-box::-webkit-scrollbar-track {
+	background: var(--scrollbarBG);
+}
+.chat-box::-webkit-scrollbar-thumb {
+	background-color: var(--thumbBG);
+	border-radius: 10px;
+	border: 3px solid var(--scrollbarBG);
+}
+.modal-dialog.payNowFirst {
+	max-width: 330px;
+	margin: 0 auto;
+}
+.payment {
+	display: inline-block;
+	padding: 12px 8px;
+	margin: 4px;
+	border: 1px solid;
+}
+.payment-partners img {
+	width: 63px;
+	height: 27px;
+}
+.modal-header button img {
+	width: 12px;
+}
+.modal-header.payNowModalHeader {
+	padding: 0 1rem;
+	background: #fff;
+}
+.payNowModalTitle {
+	margin: 0;
+	margin-left: 15px;
+	padding: 1rem 0;
+	border-bottom: 2px solid #E1E1E1;
+	color: #3B3B3B;
+	font-size: 20px;
+	font-weight: 600;
+}
+.partner-icon img {
+	width: 100px;
+	margin: 0px 0px 15px 0px;
+	border: 1px solid;
+	padding: 10px;
+}
+.short-payment-instructions p {
+	font-size: 14px;
+	font-weight: 500;
+}
+.payment-instruction-buttons {
+	display: flex;
+	justify-content: space-around;
+}
+.payment-instruction-buttons a {
+	color: #000;
+	font-size: 14px;
+	font-weight: 600;
+}
+.form-group.paymentVerify input {
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+}
+.form-group.paymentVerify {
+	margin-bottom: 10px;
+}
+.paymentVerifySubmit {
+	background: #002B49;
+}
+.paymentVerifySubmit:hover, .paymentVerifySubmit:focus, .paymentVerifySubmit:active {
+	background: RGBA(0, 43, 73, .9);
+}
+#paymentVerification .modal-header {
+	padding: 0 1rem;
+	background: #fff;
+}
+.paymentConfirmed p {
+	font-size: 16px;
+	font-weight: 500;
+	padding: 15px 0;
+}
+.payment-verify-closes {
+	padding: 10px;
+}
+#paymentVerificationConfirm .modal-header {
+	padding: 0 1rem;
+	background: #fff;
+}
+.deleteEscrowWarning p {
+	font-size: 18px;
+}
+p.deleteEscrowTopWarning {
+	font-weight: 600;
+}
+input[type="radio"] {
+	display: none;
+}
+input[type="radio"]:checked+label {
+	background-color: #fff;
+	cursor: pointer;
+	color: #000;
+}
+.modal-footer.deleteEscrowFooter label {
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 5px 30px;
+}
+/* ======== Inside Escrow Page Ends Here =========  */
+
+@media screen and (max-width: 576px) {
+	.card-body {
+		padding: .5rem;
+	}
+	.card-image {
+		max-width: 75px;
+	}
+	.card-title {
+		font-size: 10px;
+		font-weight: 700;
+	}
+	.card-text {
+		font-size: 8px;
+	}
+	h5#user-name-dashboard {
+		font-size: 18px;
+	}
+	p#user-phone {
+		font-size: 16px;
+	}
+	h4#escrow-title {
+		font-size: 13px;
+	}
+	.escrow-creation-time, .escrow-creation-time span {
+		font-size: 10px !important;
+	}
+	.escrow-amount {
+		font-size: 14px;
+	}
+	div#no-escrow-available p {
+		font-size: 14px;
+	}
+	a.single-tab {
+		padding: 15px 10px;
+	}
+	a.single-tab.active {
+		padding: 15px 10px;
+	}
+}
+</style>
 </body>
 </html>
