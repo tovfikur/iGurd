@@ -67,8 +67,8 @@
 						<div class="card single-dashboard-card">
 							<img alt="Card image cap" class="card-img-top card-image mt-1" src="{% static 'css/images/dashboard/user.png'%}">
 							<div class="card-body">
-								<h5 class="card-title user-name-dashboard" id="user-name-dashboard">Abu Hasan Rumi</h5>
-								<p class="card-text user-phone" id="user-phone">+8801317702424</p>
+								<h5 class="card-title user-name-dashboard" id="user-name-dashboard"></h5>
+								<p class="card-text user-phone" id="user-phone"></p>
 							</div>
 							<div class="card-footer">
 								<a href="edit-account.html">Edit Account</a>
@@ -109,34 +109,6 @@
 						<div class="escrow-area-section">
 							<h4>Ongoing escrow payments</h4>
 							<div class="escrow-wrap">
-								<a href="insideEscrow.html">
-								<div class="single-ongoing-escrow d-flex flex-gap">
-									<div class="escrow-text-left">
-										<h4 class="escrow-title" id="escrow-title">Test Escrow</h4>
-										<p class="escrow-creation-time m-0" id="escrow-creation-time">Created <span>30 minutes</span> ago</p>
-									</div>
-									<div class="escrow-text-right">
-										<p class="escrow-amount m-0" id="escrow-amount">100.00 BDT</p>
-									</div>
-								</div></a> <a href="insideEscrow.html">
-								<div class="single-ongoing-escrow d-flex flex-gap">
-									<div class="escrow-text-left">
-										<h4 class="escrow-title" id="escrow-title">Test Product Escrow 1</h4>
-										<p class="escrow-creation-time m-0" id="escrow-creation-time">Created <span>30 minutes</span> ago</p>
-									</div>
-									<div class="escrow-text-right">
-										<p class="escrow-amount m-0" id="escrow-amount">100.00 BDT</p>
-									</div>
-								</div></a> <a href="insideEscrow.html">
-								<div class="single-ongoing-escrow d-flex flex-gap">
-									<div class="escrow-text-left">
-										<h4 class="escrow-title" id="escrow-title">Test Product Escrow 1</h4>
-										<p class="escrow-creation-time m-0" id="escrow-creation-time">Created <span>30 minutes</span> ago</p>
-									</div>
-									<div class="escrow-text-right">
-										<p class="escrow-amount m-0" id="escrow-amount">100.00 BDT</p>
-									</div>
-								</div></a>
 								<div class="single-ongoing-escrow no-escrow-available" id="no-escrow-available">
 									<p class="m-0">No payments available</p>
 								</div>
@@ -446,10 +418,19 @@
   <script>
       window.onload = () => {
           $.ajax({
-              url: '/user/+8801736614143',
+              url: '/user/1',
               headers: { 'token': $.cookie('token') },
               success: (data) =>{
-                  alert('working');
+                  console.log(data)
+                  $('#user-phone').text(data.Phone);
+                  $('#user-name-dashboard').text(data.FullName)
+              }
+          })
+           $.ajax({
+              url: '/middleware/my',
+              headers: { 'token': $.cookie('token') },
+              success: (data) =>{
+                  console.log(data);
               }
           })
       }

@@ -114,13 +114,13 @@ class AddMeView(views.APIView):
 
 class MyPayments(generics.ListAPIView):
     serializer_class = TransectionSerializer
-
+    # queryset = Transaction.objects.all()
     def get_queryset(self):
+        print(self.request.META['HTTP_TOKEN'])
         try:
             token = self.request.META['HTTP_TOKEN']
-            condition, user_obj = check_token(self.request.data['token'])
-            token_obj = user_obj.id
-            obj = Transaction.objects.filter(Q(BuyerWalletId=token_obj) | Q(SellerWalletId=token_obj))
+            condition, user_obj = check_token(token)
+            obj = Transaction.objects.filter(Q(BuyerWalletId=user_obj) | Q(SellerWalletId=user_obj))
             return obj
         except Exception as e:
             return Transaction.objects.filter(id=0)

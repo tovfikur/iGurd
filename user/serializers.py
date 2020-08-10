@@ -6,6 +6,7 @@ class UserRetriveSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserDetails
 		fields = [
+			'id',
 			'FullName',
 			'District',
 			'Street',
