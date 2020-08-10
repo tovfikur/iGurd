@@ -1176,8 +1176,8 @@ $('#signup-next').click( function() {
                    window.location.replace("/login");
                  },
         error : function (data) {
-           alert('do it again')
-            console.log(data)
+           alert('If you already have a account with this phone number please login');
+           window.location.replace("/login");
         }
     });
 });

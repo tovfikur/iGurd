@@ -118,7 +118,8 @@ class MyPayments(generics.ListAPIView):
     def get_queryset(self):
         try:
             token = self.request.META['HTTP_TOKEN']
-            token_obj = UserToken.objects.filter(token=token).first().user.id
+            condition, user_obj = check_token(self.request.data['token'])
+            token_obj = user_obj.id
             obj = Transaction.objects.filter(Q(BuyerWalletId=token_obj) | Q(SellerWalletId=token_obj))
             return obj
         except Exception as e:
