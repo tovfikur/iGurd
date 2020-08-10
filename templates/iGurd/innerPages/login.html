@@ -107,7 +107,6 @@ $('#signup-next').click( function() {
         data: $('form').serialize(),
         success: function(data) {
             $.cookie('token', "b'"+data.token+"'");
-            alert($.cookie('token'));
             window.location.replace("/dash");
                  },
         error : function (data) {

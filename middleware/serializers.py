@@ -23,6 +23,7 @@ class TransectionSerializer(serializers.ModelSerializer):
             'SellerWalletId',
             'FixedCash',
             'Product',
+            'Title',
             'ExtraText',
             'Image1',
             'Image2',

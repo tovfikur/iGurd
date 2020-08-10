@@ -19,7 +19,7 @@ class Transaction(models.Model):
     paid                = models.BooleanField(default=False)
     Product             = models.BooleanField(default=True)
     Title               = models.CharField(blank=False,null=False,max_length=50,default='Write a TITLE')
-    ExtraText           = models.TextField
+    ExtraText           = models.TextField(null=True, blank=True)
     Image1              = models.ImageField(blank=True,null=True)
     Image2              = models.ImageField(blank=True,null=True)
     Image3              = models.ImageField(blank=True,null=True)
