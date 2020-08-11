@@ -7,7 +7,7 @@ from user.login import check_token
 from django.db.models import Q
 # Create your views here.
 
-from .models import Cash,Transaction
+from .models import Cash,Transaction, FeeOfTransection
 from wallet.models import WalletDetails
 from .serializers import CashInSerializer, TransectionSerializer
 from user.models import UserDetails,UserToken
@@ -143,6 +143,14 @@ class Pay(views.APIView):
             return Response({'error':str(e)})
         return Response({'working':'working'})
 
+
 class PrePaymentDetails(views.APIView):
-    def get(self):
-        pass
+    def get(self, request):
+        try:
+            price = int(request.GET.get('price'))
+            fee = int(FeeOfTransection.objects.first().fee)
+            exist = price - (price * fee)/100
+            exist = int(exist)
+            return Response({"price": price, "fee": fee, "exist": exist})
+        except Exception as e:
+            return Response({'error': str(e)})

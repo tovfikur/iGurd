@@ -185,17 +185,17 @@
 					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<div class="modal-body">
-					<form class="createEscrowModalForm">
+					<form class="createEscrowModalForm" id="CreateEscrow">
 						<div class="top-form-area d-flex justify-content-between">
 							<div class="form-group escrow-type mr-1 w-100">
 								<label for="escrowTypeSelectOption">I am</label> <select class="form-control" id="escrowTypeSelectOption" required="">
 									<option selected>
 										Please Select
 									</option>
-									<option value="buy">
+									<option value=1>
 										Buying
 									</option>
-									<option value="sell">
+									<option value=0>
 										Selling
 									</option>
 								</select>
@@ -224,14 +224,15 @@
 							</div>
 							<div class="dropzone pb-2">
 								<label for="escrowDropzone">Images</label>
-								<div class="js-dropzone dz-dropzone dz-dropzone-boxed gradient-overlay-half-primary-v4" id="escrowDropzone">
-									<div class="dz-message mt-4 mt-md-2">
-										<figure class="max-w-4rem mx-auto mb-2">
-											<img alt="Image Description" class="img-fluid" src="{% static 'css/images/dashboard/dropzone.png' %}">
-										</figure>
-										<p class="m-0">Drop image here (Max. 2MB per image, max. 5 image)</p>
-									</div>
-								</div>
+                                <input id="input-2" name="input2[]" type="file" class="file"  data-show-upload="false" data-show-caption="true" multiple>
+{#								<div class="js-dropzone dz-dropzone dz-dropzone-boxed gradient-overlay-half-primary-v4" id="escrowDropzone">#}
+{#									<div class="dz-message mt-4 mt-md-2">#}
+{#										<figure class="max-w-4rem mx-auto mb-2">#}
+{#											<img alt="Image Description" class="img-fluid" src="{% static 'css/images/dashboard/dropzone.png' %}">#}
+{#										</figure>#}
+{#										<p class="m-0">Drop image here (Max. 2MB per image, max. 5 image)</p>#}
+{#									</div>#}
+{#								</div>#}
 							</div>
 						</div>
 						<div class="form-group escrowAmount pb-2">
@@ -257,15 +258,15 @@
 						<div class="createEscrowPaymentDetails">
 							<div class="escrowPrice d-flex justify-content-between align-items-center">
 								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="escrowPrice"><span class="d-flex justify-content-between align-items-center">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0" id="escrowPrice"><span class="d-flex justify-content-between align-items-center" id="price">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 							<div class="escrowIGurdFee d-flex justify-content-between align-items-center">
 								<p class="m-0 payment-details">iGurd Fee:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="iGurdFee"><span class="d-flex justify-content-between align-items-center">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0" id="iGurdFee"><span class="d-flex justify-content-between align-items-center" id="fee">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 							<div class="toPayTotal d-flex justify-content-between align-items-center">
 								<p class="my-1">To pay:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center" id="exist">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 						</div>
 {#						<div class="coupon-area">#}
@@ -333,15 +334,15 @@
 						<div class="addMoneyDetails">
 							<div class="moneyAmount d-flex justify-content-between align-items-center">
 								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="amountOfMoney"><span class="d-flex justify-content-between align-items-center">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0" id="amountOfMoney"><span class="d-flex justify-content-between align-items-center" id="price">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 							<div class="addMoneyFee d-flex justify-content-between align-items-center">
 								<p class="m-0 payment-details">iGurd Fee:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="iGurdFeeToAddMoney"><span class="d-flex justify-content-between align-items-center">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0" id="iGurdFeeToAddMoney"><span class="d-flex justify-content-between align-items-center" id="fee">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 							<div class="toPayTotal d-flex justify-content-between align-items-center">
-								<p class="m-0">To pay:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0">Paying:</p><span class="d-flex justify-content-between align-items-center"></span>
+								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center" id="pay">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 						</div>
 						<div class="addMoneyModalFooter mt-3">
@@ -454,14 +455,68 @@
   </script>
 {#    Create escrow#}
     <script>
+        $('#escrowAmountField').keyup(()=>{
+            $.ajax({
+                url: '/middleware/link/pre/?price='+$('#escrowAmountField').val(),
+                headers: { 'token': $.cookie('token') },
+                success: (data) =>{
+                    $('#exist').html(data.exist);
+                    $('#fee').html(data.fee+'%');
+                    $('#price').html(data.price);
+                }
+          });
+        });
         function createLink() {
+            var id   = $.cookie('id');
             var type = $('#escrowTypeSelectOption').val();
             var prod = $('#escrowForSelectOption').val();
             var title= $('#escrowTitle').val();
             var desc = $('#escrowDescription').val();
             var amnt = $('#escrowAmountField').val();
-            console.log(type, prod, title, desc, amnt);
-            $('#invitePartnerModal').modal("show");
+            var token = $.cookie('token');
+            var fp = $("#input-2");
+            var lg = fp[0].files.length; // get length
+            var items = fp[0].files;
+
+            var img1 = items[0];
+            var img2 = items[1];
+            var img3 = items[2];
+            var img4 = items[3];
+            var img5 = items[4];
+
+            var JsonData = {
+
+            }
+
+            {#var fromData = new FormData();#}
+            {#fromData.append("token",$.cookie('token'));#}
+            {#fromData.append("Creator",$.cookie('id'));#}
+            {#if (type){#}
+            {#    fromData.append("BuyerWalletId",$.cookie('id'));#}
+            {# }else{ #}
+            {#    fromData.append("SellerWalletId",$.cookie('id'));#}
+            {# } #}
+            {#fromData.append("FixedCash",amnt);#}
+            {#fromData.append("Product",prod);#}
+            {#fromData.append("Title",title);#}
+            {#fromData.append("ExtraText",desc);#}
+            {#fromData.append("Image1",img1);#}
+            {#fromData.append("Image2",img2);#}
+            {#fromData.append("Image3",img3);#}
+            {#fromData.append("Image4",img4);#}
+            {#fromData.append("Image5",img5);#}
+
+
+             $.ajax({
+                 url: '/middleware/link/create/',
+                 type: 'post',
+                 dataType: 'json',
+                 data: fromData,
+                 headers: { 'token': $.cookie('token') },
+                 success: (data) =>{
+                     console.log(data);
+                }
+             });
         }
     </script>
 

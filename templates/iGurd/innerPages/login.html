@@ -107,6 +107,16 @@ $('#signup-next').click( function() {
         data: $('form').serialize(),
         success: function(data) {
             $.cookie('token', "b'"+data.token+"'");
+            $.ajax({
+                url: '/user/1',
+                headers: { 'token': $.cookie('token') },
+                success: (data) =>{
+                    $.cookie('id', "b'"+data.id+"'");
+                },
+              error : () =>{
+                  window.location.replace = '/login'
+              }
+          });
             window.location.replace("/dash");
                  },
         error : function (data) {
