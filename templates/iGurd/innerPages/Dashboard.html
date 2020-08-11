@@ -109,9 +109,6 @@
 						<div class="escrow-area-section">
 							<h4>Ongoing escrow payments</h4>
 							<div class="escrow-wrap">
-								<div class="single-ongoing-escrow no-escrow-available" id="no-escrow-available">
-									<p class="m-0">No payments available</p>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -208,10 +205,10 @@
 									<option selected>
 										Please Select
 									</option>
-									<option value="product">
+									<option value= True>
 										Product
 									</option>
-									<option value="service">
+									<option value= False>
 										Service
 									</option>
 								</select>
@@ -240,23 +237,23 @@
 						<div class="form-group escrowAmount pb-2">
 							<label for="escrowAmountField">Amount (BDT):</label> <input class="form-control escrowAmountField" id="escrowAmountField" placeholder="100" required="" type="number">
 						</div>
-						<div class="createEscrowRadioBtns text-center pb-2">
-							<div class="radio-btn-header pb-2">
-								<h4>Choose who pays the escrow fees:</h4>
-								<p class="m-0">The fees are due upon receipt of the money.</p>
-							</div>
-							<div class="radio-box-wra">
-								<div class="custom-control custom-radio custom-control-inline">
-									<input class="custom-control-input" id="MeRadioBtn" name="escrowRadioBtns" type="radio"> <label class="custom-control-label" for="MeRadioBtn">Me</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input checked class="custom-control-input" id="50/50RadioBtns" name="escrowRadioBtns" type="radio"> <label class="custom-control-label" for="50/50RadioBtns">50/50</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input class="custom-control-input" id="partnerRadioBtns" name="escrowRadioBtns" type="radio"> <label class="custom-control-label" for="partnerRadioBtns">Partner</label>
-								</div>
-							</div>
-						</div>
+{#						<div class="createEscrowRadioBtns text-center pb-2">#}
+{#							<div class="radio-btn-header pb-2">#}
+{#								<h4>Choose who pays the escrow fees:</h4>#}
+{#								<p class="m-0">The fees are due upon receipt of the money.</p>#}
+{#							</div>#}
+{#							<div class="radio-box-wra">#}
+{#								<div class="custom-control custom-radio custom-control-inline">#}
+{#									<input class="custom-control-input" id="MeRadioBtn" name="escrowRadioBtns" type="radio"> <label class="custom-control-label" for="MeRadioBtn">Me</label>#}
+{#								</div>#}
+{#								<div class="custom-control custom-radio custom-control-inline">#}
+{#									<input checked class="custom-control-input" id="50/50RadioBtns" name="escrowRadioBtns" type="radio"> <label class="custom-control-label" for="50/50RadioBtns">50/50</label>#}
+{#								</div>#}
+{#								<div class="custom-control custom-radio custom-control-inline">#}
+{#									<input class="custom-control-input" id="partnerRadioBtns" name="escrowRadioBtns" type="radio"> <label class="custom-control-label" for="partnerRadioBtns">Partner</label>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
 						<div class="createEscrowPaymentDetails">
 							<div class="escrowPrice d-flex justify-content-between align-items-center">
 								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
@@ -271,20 +268,20 @@
 								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 						</div>
-						<div class="coupon-area">
-							<p class="m-0"><a aria-controls="collapseExample" aria-expanded="false" class="coupon-btn" data-toggle="collapse" href="#collapseExample" role="button">Do you have a coupon?</a></p>
-							<div class="collapse" id="collapseExample">
-								<div class="card card-body coupon-body">
-									<form class="form-inline">
-										<div class="form-group mb-2">
-											<input class="form-control" id="couponField" placeholder="Enter coupon:" type="text"> <button class="coupon-apply-btn" type="submit">Apply</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+{#						<div class="coupon-area">#}
+{#							<p class="m-0"><a aria-controls="collapseExample" aria-expanded="false" class="coupon-btn" data-toggle="collapse" href="#collapseExample" role="button">Do you have a coupon?</a></p>#}
+{#							<div class="collapse" id="collapseExample">#}
+{#								<div class="card card-body coupon-body">#}
+{#									<form class="form-inline">#}
+{#										<div class="form-group mb-2">#}
+{#											<input class="form-control" id="couponField" placeholder="Enter coupon:" type="text"> <button class="coupon-apply-btn" type="submit">Apply</button>#}
+{#										</div>#}
+{#									</form>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
 						<div class="createEscrowModalFooter mt-2">
-							<a class="btn createEscrowFooterNext-btn" data-dismiss="modal" data-target="#invitePartnerModal" data-toggle="modal" href="#" id="createEscrowFooterNext-btn">Next</a>
+							<a class="btn createEscrowFooterNext-btn" data-dismiss="modal" {# data-target="#invitePartnerModal" #} data-toggle="modal" href="#" id="createEscrowFooterNext-btn" onclick="createLink()">Next</a>
 						</div>
 					</form>
 				</div>
@@ -414,27 +411,59 @@
 	       });
 	</script>
 
-
+{#Post action#}
   <script>
       window.onload = () => {
           $.ajax({
               url: '/user/1',
               headers: { 'token': $.cookie('token') },
               success: (data) =>{
-                  console.log(data)
                   $('#user-phone').text(data.Phone);
                   $('#user-name-dashboard').text(data.FullName)
+              },
+              error : () =>{
+                  window.location.replace = '/login'
               }
-          })
+          });
            $.ajax({
               url: '/middleware/my',
               headers: { 'token': $.cookie('token') },
               success: (data) =>{
-                  console.log(data);
+                  $.each(data, (i,val) => {
+                      $('.escrow-wrap').append('<a href="insideEscrow.html">\n' +
+                          '    <div class="single-ongoing-escrow d-flex flex-gap">\n' +
+                          '        <div class="escrow-text-left">\n' +
+                          '            <h4 class="escrow-title" id="escrow-title">'+val.Title+'</h4>\n' +
+                          '        </div>\n' +
+                          '        <div class="escrow-text-right">\n' +
+                          '            <p class="escrow-amount m-0" id="escrow-amount">'+val.FixedCash+' BDT</p>\n' +
+                          '        </div>\n' +
+                          '    </div>\n' +
+                          '</a>')
+                  });
+                  $('.escrow-wrap').append('\n' +
+                      '<div class="single-ongoing-escrow no-escrow-available" id="no-escrow-available">\n' +
+                      '<p class="m-0">No payments available</p>\n' +
+                      '</div>')
+              },
+               error : () =>{
+                  window.location.replace = '/login'
               }
           })
-      }
+      };
   </script>
+{#    Create escrow#}
+    <script>
+        function createLink() {
+            var type = $('#escrowTypeSelectOption').val();
+            var prod = $('#escrowForSelectOption').val();
+            var title= $('#escrowTitle').val();
+            var desc = $('#escrowDescription').val();
+            var amnt = $('#escrowAmountField').val();
+            console.log(type, prod, title, desc, amnt);
+            $('#invitePartnerModal').modal("show");
+        }
+    </script>
 
 
 <style>

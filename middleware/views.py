@@ -142,3 +142,7 @@ class Pay(views.APIView):
         except Exception as e:
             return Response({'error':str(e)})
         return Response({'working':'working'})
+
+class PrePaymentDetails(views.APIView):
+    def get(self):
+        pass

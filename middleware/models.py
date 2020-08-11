@@ -10,6 +10,14 @@ class Cash(models.Model):
     TrxId               = models.CharField(blank=False, max_length=64,unique=True)
 
 
+class FeeOfTransection(models.Model):
+    fee                 = models.IntegerField(default=0)
+
+    def clean(self):
+        if FeeOfTransection.objects.exists() and not self.pk:
+            raise ('You can just edit not add')
+
+
 class Transaction(models.Model):
     Creator             = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.DO_NOTHING, related_name='Creator_of_this_transaction',default=1)
     SellerWalletId      = models.ForeignKey(UserDetails,blank=True,null=True, on_delete=models.DO_NOTHING, related_name='Seller_of_this_transection',default=1)

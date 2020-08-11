@@ -83,7 +83,7 @@ class LoginView(APIView):
 
         try:
             if user_token_obj:
-                return Response({'login':'Success','token':user_token_obj[0].token})
+                return Response({'login':'Success','token':user_token_obj[0].token, 'id':user_obj.first().id})
         except:
             print('not sending token')
         return  Response({'login':"Doesn't responding"})
