@@ -15,7 +15,7 @@ class UserRetriveSerializer(serializers.ModelSerializer):
 			'Phone',
 		]
 
-
+		
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserDetails

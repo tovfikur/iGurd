@@ -101,3 +101,9 @@ class UserApi(generics.RetrieveAPIView):
             return UserDetails.objects.filter(id=0)
     serializer_class = UserRetriveSerializer
     lookup_field = "ACT"
+
+
+class UserPublicData(generics.RetrieveAPIView):
+    queryset = UserDetails.objects.all()
+    serializer_class = UserRetriveSerializer
+    lookup_field = 'id'

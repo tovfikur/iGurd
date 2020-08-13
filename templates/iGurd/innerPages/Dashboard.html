@@ -328,25 +328,27 @@
 				</div>
 				<div class="modal-body">
 					<form class="addWalletMoneyModalForm">
+                        {% csrf_token %}
+                        <input id="token" name="token" value="" hidden>
 						<div class="form-group addMoney pb-2">
-							<label for="addMoneyField">Amount (BDT):</label> <input class="form-control addMoneyField" id="addMoneyField" placeholder="100" required="" type="number">
+							<label for="addMoneyField">Sender Phonenumber:</label> <input class="form-control addMoneyField" id="addMoneyField" placeholder="+8801796693300" required="" type="number" name="phone">
 						</div>
-						<div class="addMoneyDetails">
-							<div class="moneyAmount d-flex justify-content-between align-items-center">
-								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="amountOfMoney"><span class="d-flex justify-content-between align-items-center" id="price">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
-							</div>
-							<div class="addMoneyFee d-flex justify-content-between align-items-center">
-								<p class="m-0 payment-details">iGurd Fee:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="iGurdFeeToAddMoney"><span class="d-flex justify-content-between align-items-center" id="fee">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
-							</div>
-							<div class="toPayTotal d-flex justify-content-between align-items-center">
-								<p class="m-0">Paying:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center" id="pay">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
-							</div>
-						</div>
+{#						<div class="addMoneyDetails">#}
+{#							<div class="moneyAmount d-flex justify-content-between align-items-center">#}
+{#								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>#}
+{#								<p class="m-0" id="amountOfMoney"><span class="d-flex justify-content-between align-items-center" id="price">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>#}
+{#							</div>#}
+{#							<div class="addMoneyFee d-flex justify-content-between align-items-center">#}
+{#								<p class="m-0 payment-details">iGurd Fee:</p><span class="d-flex justify-content-between align-items-center"></span>#}
+{#								<p class="m-0" id="iGurdFeeToAddMoney"><span class="d-flex justify-content-between align-items-center" id="fee">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>#}
+{#							</div>#}
+{#							<div class="toPayTotal d-flex justify-content-between align-items-center">#}
+{#								<p class="m-0">Paying:</p><span class="d-flex justify-content-between align-items-center"></span>#}
+{#								<p class="m-0" id="toPay"><span class="d-flex justify-content-between align-items-center" id="pay">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>#}
+{#							</div>#}
+{#						</div>#}
 						<div class="addMoneyModalFooter mt-3">
-							<a class="btn addMoneyFooter-btn" data-dismiss="modal" data-target="#addMoneyConfirmation" data-toggle="modal" href="#" id="addMoneyFooter-btn">Add Money</a>
+							<a id="AddMoney" class="btn addMoneyFooter-btn" data-dismiss="modal" {# data-target="#addMoneyConfirmation" data-toggle="modal" #} href="#" id="addMoneyFooter-btn">Add Money</a>
 						</div>
 					</form>
 				</div>
@@ -431,7 +433,9 @@
               headers: { 'token': $.cookie('token') },
               success: (data) =>{
                   $.each(data, (i,val) => {
-                      $('.escrow-wrap').append('<a href="insideEscrow.html">\n' +
+                      localStorage.setItem('escrow'+i,JSON.stringify(val));
+                      console.log(i);
+                      $('.escrow-wrap').append('<a href="/inside?escrowid='+i+'">\n' +
                           '    <div class="single-ongoing-escrow d-flex flex-gap">\n' +
                           '        <div class="escrow-text-left">\n' +
                           '            <h4 class="escrow-title" id="escrow-title">'+val.Title+'</h4>\n' +
@@ -519,7 +523,24 @@
              });
         }
     </script>
-
+<script>
+    $('#AddMoney').click(()=>{
+        $('#token').val($.cookie('token'));
+        $.ajax({
+            url: '/wallet/cash/in/',
+            type: 'post',
+            dataType: 'json',
+            data: $('form.addWalletMoneyModalForm').serialize(),
+            success: function(data) {
+                $('#addMoneyConfirmation').modal('show');
+            },
+            error : function (data) {
+                alert('please try with correct password');
+                window.location.replace("/login");
+            }
+        });
+    })
+</script>
 
 <style>
     /* Fonts */

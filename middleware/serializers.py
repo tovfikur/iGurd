@@ -16,6 +16,7 @@ class CashInSerializer(serializers.ModelSerializer):
 class TransectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
+        read_only_fields = ('Time',)
         fields = [
             'id',
             'Creator',
@@ -30,7 +31,9 @@ class TransectionSerializer(serializers.ModelSerializer):
             'Image3',
             'Image4',
             'Image5',
-		]
+            'Time',
+        ]
+
     def validate(self, data):
         wallet_obj = WalletDetails.objects.all()
         if data['BuyerWalletId']:

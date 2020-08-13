@@ -6,4 +6,5 @@ urlpatterns = [
     path('login/', views.LoginView.as_view()),
     path('<Phone>/update', views.UserUpdateView.as_view()),
     path('<ACT>/', views.UserApi.as_view()),
+    path('public/<id>', views.UserPublicData.as_view()),
 ]

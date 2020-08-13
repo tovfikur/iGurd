@@ -70,30 +70,30 @@
 								<p class="escrow-title m-0" id="escrow-title">Escrow Title</p><a href="#" id="escrow-image">View Image</a>
 							</div>
 							<div class="transaction-details d-flex justify-content-between">
-								<small class="transaction-code">Transaction No: <span id="transaction-id">061616IGP</span></small> <small class="transaction-date">09 July 2020, <span id="transaction-time">20:30</span></small>
+								<small class="transaction-code">Transaction No: <span id="transaction-id">061616IGP</span></small> <small class="transaction-date">09 July 2020, <!-- <span id="transaction-time">20:30</span> --> </small>
 							</div>
 							<div class="step-guide d-flex align-items-center py-2">
-								<a class="step-by-step-link d-inline-block d-flex align-items-center" href="#"><img alt="" src="{% static 'css/images/dashboard/guide.png' %}">Step-by-Step Guide</a>
+								<a class="step-by-step-link d-inline-block d-flex align-items-center" href="#"><img alt="" src="{% static 'css/images/dashboard/guide.png' %}">Escrow information</a>
 							</div>
 							<div class="escrow-details py-2">
 								<div class="escrowPrice d-flex justify-content-between align-items-center">
-									<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
-									<p class="m-0 mr-1 mr-1" id="escrowPrice"><span class="d-flex justify-content-between align-items-center">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+									<p class="m-0 payment-details">Creator :</p><span class="d-flex justify-content-between align-items-center"></span>
+									<p class="m-0 mr-1 mr-1" id="escrowPrice"><span class="d-flex justify-content-between align-items-center" id="creator">Example</span></p>{# <span class="d-flex justify-content-between align-items-center">BDT</span> #}
 								</div>
 								<div class="escrowIGurdFee d-flex justify-content-between align-items-center">
-									<p class="m-0 payment-details">iGurd Fee:</p><span class="d-flex justify-content-between align-items-center"></span>
-									<p class="m-0 mr-1" id="iGurdFee"><span class="d-flex justify-content-between align-items-center">10.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+									<p class="m-0 payment-details">To Pay :</p><span class="d-flex justify-content-between align-items-center"></span>
+									<p class="m-0 mr-1" id="iGurdFee"><span class="d-flex justify-content-between align-items-center" id="fixed">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 								</div>
 								<div class="toPayTotal d-flex justify-content-between align-items-center my-2">
-									<p class="my-1">To pay:</p><span class="d-flex justify-content-between align-items-center"></span>
-									<p class="m-0 mr-1" id="toPay"><span class="d-flex justify-content-between align-items-center">110.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+									<p class="my-1">Paying :</p><span class="d-flex justify-content-between align-items-center"></span>
+									<p class="m-0 mr-1" id="toPay"><span class="d-flex justify-content-between align-items-center" id="paying">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 								</div>
 							</div>
-							<div class="fee-info d-flex align-items-center">
-								<a class="fee-info-link d-inline-block d-flex align-items-center" href="#">* Information about our fees</a>
-							</div>
+{#							<div class="fee-info d-flex align-items-center">#}
+{#								<a class="fee-info-link d-inline-block d-flex align-items-center" href="#">* Information about our fees</a>#}
+{#							</div>#}
 							<div class="escrow-footer-btns text-center my-2">
-								<a class="btn invite-partner-btn my-1 py-2 px-6" data-dismiss="modal" data-target="#invitePartnerModal" data-toggle="modal" href="#" id="invite-partner-btn">Invite Business Partner</a> <a class="btn delete-escrow-btn my-1 py-2 px-6" data-dismiss="modal" data-target="#deleteEscrowModal" data-toggle="modal" href="#" id="delete-escrow-btn">Delete Escrow Payment</a>
+								<a class="btn invite-partner-btn my-1 py-2 px-6" data-dismiss="modal" {# data-target="#invitePartnerModal" data-toggle="modal" #} href="#" id="invite-partner-btn">Invite Business Partner</a> <a class="btn delete-escrow-btn my-1 py-2 px-6" data-dismiss="modal" data-target="#deleteEscrowModal" data-toggle="modal" href="#" id="delete-escrow-btn">Delete Escrow Payment</a>
 							</div>
 						</div>
 					</div>
@@ -510,7 +510,7 @@
 						</div>
 						<div class="createEscrowPaymentDetails">
 							<div class="escrowPrice d-flex justify-content-between align-items-center">
-								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
+								<p class="m-0 payment-details">Price :</p><span class="d-flex justify-content-between align-items-center"></span>
 								<p class="m-0" id="escrowPrice"><span class="d-flex justify-content-between align-items-center">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 							<div class="escrowIGurdFee d-flex justify-content-between align-items-center">
@@ -558,7 +558,7 @@
 							<p>Send the following link to your partner:</p>
 						</div>
 						<div class="invite-partner-link" id="invite-partner-link">
-							<p class="share-link" id="share-link">https://secure.igurd.com/links/0720OIAP?icc=0720OIAP&lang=en</p>
+							<p class="share-link" id="share-link"></p>
 							<p class="copy-btn"><img alt="" src="{% static 'css/images/dashboard/copy-btn.png' %}">Copy Link</p>
 						</div>
 					</div>
@@ -586,8 +586,8 @@
 						</div>
 						<div class="addMoneyDetails">
 							<div class="moneyAmount d-flex justify-content-between align-items-center">
-								<p class="m-0 payment-details">Price:</p><span class="d-flex justify-content-between align-items-center"></span>
-								<p class="m-0" id="amountOfMoney"><span class="d-flex justify-content-between align-items-center">100.00</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
+								<p class="m-0 payment-details">Creator:</p><span class="d-flex justify-content-between align-items-center"></span>
+								<p class="m-0" id="amountOfMoney"><span class="d-flex justify-content-between align-items-center" id="creator">Example</span></p><span class="d-flex justify-content-between align-items-center">BDT</span>
 							</div>
 							<div class="addMoneyFee d-flex justify-content-between align-items-center">
 								<p class="m-0 payment-details">iGurd Fee:</p><span class="d-flex justify-content-between align-items-center"></span>
@@ -664,6 +664,71 @@
 	         });
 	       });
 	</script>
+    <script>
+       $(document).ready(()=>{
+           var tester = getUrlParameter('escrowid');
+           var EscrowData = localStorage.getItem('escrow'+tester);
+           var object = JSON.parse(EscrowData);
+           console.log(object);
+           if (!object){
+               $.ajax({
+                   url:''+tester,
+                   success: (data) =>{
+                       object = data[0].fields;
+                       $('#escrow-title').text(object.Title);
+                       $('#transaction-id').text(object.id);
+                       $('.transaction-date').text(object.Time);
+                       $('#fixed').text(object.FixedCash);
+                       if (object.BuyerWalletId && object.SellerWalletId){
+                           $('#invite-partner-btn').hide();
+                       } else if (object.BuyerWalletId || object.SellerWalletId){
+                           {#$('#invite-partner-btn').click()#}
+                       }
+                       $.ajax({
+                           url: '/user/public/'+object.Creator,
+                           success: (data) =>{
+                               $('#creator').text(data.FullName)
+                           }
+                       })
+                       $.ajax({
+                           url: '/middleware/link/pre/?price='+object.FixedCash,
+                           success: (data) => {
+                               $('#paying').text(data.exist);
+                           }
+                       })
+                   }
+               })
+           }
+           $('#escrow-title').text(object.Title);
+           $('#transaction-id').text(object.id);
+           $('.transaction-date').text(object.Time);
+           $('#fixed').text(object.FixedCash);
+           if (object.BuyerWalletId && object.SellerWalletId){
+               $('#invite-partner-btn').hide();
+           } else if (object.BuyerWalletId || object.SellerWalletId){
+               {#$('#invite-partner-btn').click()#}
+           }
+
+           $.ajax({
+               url: '/middleware/link/pre/?price='+object.FixedCash,
+               success: (data) => {
+                   $('#paying').text(data.exist);
+               }
+           })
+           $.ajax({
+               url: '/user/public/'+object.Creator,
+               success: (data) =>{
+                   $('#creator').text(data.FullName)
+               }
+            })
+           $('#invite-partner-btn').click(()=>{
+               $.ajax({
+                   url:'/inside?escrowid='+object.id
+               })
+           })
+       })
+
+    </script>
 <style>
     /* Fonts */
 
