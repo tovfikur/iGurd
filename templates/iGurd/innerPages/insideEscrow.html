@@ -14,11 +14,11 @@
 		<div class="container">
 			<nav class="d-flex justify-content-between align-items-center">
 				<div>
-					<a href="Dashboard.html"><img alt="iGurd Logo" class="logo" src="{% static 'css/images/innerLogo.png' %}"></a>
+					<a href="/dash"><img alt="iGurd Logo" class="logo" src="{% static 'css/images/innerLogo.png' %}"></a>
 				</div>
 				<div class="right-nav">
 					<div class="nav-links d-flex d-block justify-content-between align-items-center">
-						<a class="single-tab active" href="Dashboard.html"><img alt="" src="{% static 'css/images/nav-icons/home.png' %}"></a> <!-- Unfold (Dropdown) -->
+						<a class="single-tab active" href="/dash"><img alt="" src="{% static 'css/images/nav-icons/home.png' %}"></a> <!-- Unfold (Dropdown) -->
 						<div class="hs-unfold">
 							<a class="js-hs-unfold-invoker dropdown-toggle single-tab" data-hs-unfold-options='{ "target": "#dropdownWithHref", "type": "css-animation", "animationIn": "fadeInUp", "animationOut": "fadeOutDown", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/notification.png' %}"></a>
 							<div class="hs-unfold-content dropdown-menu notification-area" id="dropdownWithHref">
@@ -222,10 +222,10 @@
 						<div class="sidebar-content">
 							<div class="side-nav-w-icons p-4">
 								<div class="side-dashboard d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="Dashboard.html">Dashboard</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="/dash">Dashboard</a>
 								</div>
 								<div class="side-profile d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="edit-account.html">Profile</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="/edit">Profile</a>
 								</div>
 								<div class="side-wallet d-flex align-items-center p-2">
 									<img alt="" class="" src="{% static 'css/images/nav-icons/wallet.png' %}"> <span class="side-wallet-text d-block"><a href="#">Wallet</a> <small class="d-block">Your balance <span id="side-wallet-balance">0.00</span> BDT</small></span>
@@ -269,7 +269,7 @@
 						<button class="btn text-white login-btn" data-target="#change-password-confirmed" data-toggle="modal" id="login-btn" type="button">Login</button>
 					</div>
 					<div class="below-modal-footer-links text-center pb-4">
-						<a href="signup.html">Create a New Account</a> <small>/</small> <a href="restorePassword.html">Forgot Password</a>
+						<a href="/signup">Create a New Account</a> <small>/</small> <a href="#">Forgot Password</a>
 					</div>
 				</form>
 			</div>

@@ -74,8 +74,8 @@ class AddMeView(views.APIView):
             tran_obj = Transaction.objects.filter(id = request.GET['code'])[0]
             serialized_obj = serializers.serialize('json', [tran_obj, ])
             serialized_obj = json.loads(serialized_obj)
-            print(serialized_obj)
-            return Response(serialized_obj)
+            print(serialized_obj[0])
+            return Response(serialized_obj[0])
         except Exception as e:
             print('m2',e)
             return Response({'Info':'Try with correct code'})

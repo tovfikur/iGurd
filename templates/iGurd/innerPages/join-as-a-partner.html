@@ -16,22 +16,22 @@
 			<div class="row d-flex align-items-center nav-height">
 				<div class="col-6 col-md-5 col-lg-2 p-lg-0">
 					<div class="logo">
-						<a href="../index.html"><img alt="" class="mx-4 mx-md-3" src="{% static 'css/images/innerLogo.png' %}"></a>
+						<a href="/"><img alt="" class="mx-4 mx-md-3" src="{% static 'css/images/innerLogo.png' %}"></a>
 					</div>
 				</div>
 				<div class="p-0 d-none d-lg-block col-lg-6">
 					<nav class="nav-area">
-						<a class="nav-item pl-0" href="../index.html#hero-area">Home</a> <a class="nav-item" href="../index.html#about-area">About us</a> <a class="nav-item" href="../index.html#process-area">How it works</a> <a class="nav-item br-none" href="fee-calculator.html">Fee Calculator</a>
+						<a class="nav-item pl-0" href="/#hero-area">Home</a> <a class="nav-item" href="/#about-area">About us</a> <a class="nav-item" href="/#process-area">How it works</a> <a class="nav-item br-none" href="/fee">Fee Calculator</a>
 					</nav>
 				</div>
 				<div class="col-6 col-md-6 col-lg-4 d-none d-md-block text-right">
 					<div class="user-buttons text-right">
-						<a class="signup-btn px-2 px-md-3 py-2" href="signup.html">Sign up</a> <a class="login-btn px-3 px-md-4 py-2" href="login.html">Login</a>
+						<a class="signup-btn px-2 px-md-3 py-2" href="/signup">Sign up</a> <a class="login-btn px-3 px-md-4 py-2" href="/login">Login</a>
 					</div>
 				</div>
 				<div class="col-6 col-md-1 d-lg-none text-right">
 					<div class="sidenav" id="mySidenav">
-						<a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a> <a class="nav-item" href="#hero-area">Home</a> <a class="nav-item" href="#about-area">About us</a> <a class="nav-item" href="#process-area">How it works</a> <a class="nav-item" href="innerPages/fee-calculator.html">Fee Calculator</a> <a class="nav-item d-md-none" href="innerPages/signup.html">Sign up</a> <a class="nav-item d-md-none" href="innerPages/login.html">Login</a>
+						<a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a> <a class="nav-item" href="#hero-area">Home</a> <a class="nav-item" href="#about-area">About us</a> <a class="nav-item" href="#process-area">How it works</a> <a class="nav-item" href="/fee">Fee Calculator</a> <a class="nav-item d-md-none" href="/signup">Sign up</a> <a class="nav-item d-md-none" href="/login">Login</a>
 					</div><span class="d-flex justify-content-end align-items-center" onclick="openNav()" style="font-size:30px;cursor:pointer"><img alt="" class="hamburder-bars mx-4 mx-md-3" src="{% static 'css/images/nav-icons/hamburger-bars.png' %}"></span>
 				</div>
 			</div>
@@ -152,10 +152,10 @@
 						<div class="sidebar-content">
 							<div class="side-nav-w-icons p-4">
 								<div class="side-dashboard d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="Dashboard.html">Dashboard</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="/dash">Dashboard</a>
 								</div>
 								<div class="side-profile d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="edit-account.html">Profile</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="/edit">Profile</a>
 								</div>
 								<div class="side-wallet d-flex align-items-center p-2">
 									<img alt="" class="" src="{% static 'css/images/nav-icons/wallet.png' %}"> <span class="side-wallet-text d-block"><a href="#">Wallet</a> <small class="d-block">Your balance <span id="side-wallet-balance">0.00</span> BDT</small></span>
@@ -199,7 +199,7 @@
 						<button class="btn text-white login-btn" data-target="#change-password-confirmed" data-toggle="modal" id="login-btn" type="button">Login</button>
 					</div>
 					<div class="below-modal-footer-links text-center pb-4">
-						<a href="signup.html">Create a New Account</a> <small>|</small> <a href="restorePassword.html">Forgot Password</a>
+						<a href="/signup">Create a New Account</a> <small>|</small> <a href="#">Forgot Password</a>
 					</div>
 				</form>
 			</div>
