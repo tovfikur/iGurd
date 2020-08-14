@@ -9,5 +9,12 @@ class Chat(models.Model):
     Transaction= models.ForeignKey(Transaction,on_delete=models.DO_NOTHING,default=1)
     Importance = models.SmallIntegerField(default=0)
     Time       = models.DateTimeField(auto_now_add=True)
-    Text = models.TextField(null=True, blank=True)
-    Seen = models.BooleanField(default=False)
+    Text       = models.TextField(null=True, blank=True)
+    Seen       = models.BooleanField(default=False)
+
+
+class Notice(models.Model):
+    UserID      = models.ForeignKey(UserDetails, on_delete=models.DO_NOTHING, default=1)
+    Text        = models.TextField(null=True,blank=True)
+    Time        = models.DateTimeField(auto_now_add=True)
+    Seen        = models.BooleanField(default=False)

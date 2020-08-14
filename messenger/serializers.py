@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Chat
+from .models import Chat, Notice
 
 
 class ChatSerializer(serializers.ModelSerializer):
@@ -12,4 +12,16 @@ class ChatSerializer(serializers.ModelSerializer):
             'Text',
             'Seen',
             'Importance'
+        ]
+
+
+class NoticeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notice
+        fields = [
+            'id',
+            'UserID',
+            'Time',
+            'Text',
+            'Seen'
         ]
