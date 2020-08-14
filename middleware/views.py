@@ -7,7 +7,7 @@ from user.login import check_token
 from django.db.models import Q
 # Create your views here.
 
-from .models import Cash,Transaction, FeeOfTransection
+from .models import Cash,Transaction, FeeOfTransection, TransactionTrash
 from wallet.models import WalletDetails
 from .serializers import CashInSerializer, TransectionSerializer
 from user.models import UserDetails,UserToken
@@ -154,3 +154,35 @@ class PrePaymentDetails(views.APIView):
             return Response({"price": price, "fee": fee, "exist": exist})
         except Exception as e:
             return Response({'error': str(e)})
+
+
+class DeletePayment(generics.DestroyAPIView):
+    serializer_class = TransectionSerializer
+    queryset = Transaction.objects.all()
+    lookup_field = 'id'
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            temp_tra = TransactionTrash.objects.all()
+            temp_obj = self.get_object()
+            temp_tra.Creator = temp_obj.Creator
+            temp_tra.SellerWalletId = temp_obj.SellerWalletId
+            temp_tra.BuyerWalletId = temp_obj.BuyerWalletId
+            temp_tra.FixedCash = temp_obj.FixedCash
+            temp_tra.Time = temp_obj.Time
+            temp_tra.paid = temp_obj.paid
+            temp_tra.Product = temp_obj.Product
+            temp_tra.Title = temp_obj.Title
+            temp_tra.ExtraText = temp_obj.ExtraText
+            temp_tra.Image1 = temp_obj.Image1
+            temp_tra.Image2 = temp_obj.Image2
+            temp_tra.Image3 = temp_obj.Image3
+            temp_tra.Image4 = temp_obj.Image4
+            temp_tra.Image5 = temp_obj.Image5
+            print(temp_tra.FixedCash)
+            print('ooooooooooooooooooooooooooooooooooooooooooooooooooo')
+            print(temp_obj.FixedCash)
+            temp_tra.create()
+        except Exception as e:
+            print(e)
+        return self.destroy(request, *args, **kwargs)

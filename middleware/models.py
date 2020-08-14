@@ -33,3 +33,20 @@ class Transaction(models.Model):
     Image3              = models.ImageField(blank=True,null=True)
     Image4              = models.ImageField(blank=True,null=True)
     Image5              = models.ImageField(blank=True,null=True)
+
+
+class TransactionTrash(models.Model):
+    Creator             = models.ForeignKey(UserDetails,blank=False,null=False, on_delete=models.DO_NOTHING, related_name='Trash_Creator_of_this_transaction',default=1)
+    SellerWalletId      = models.ForeignKey(UserDetails,blank=True,null=True, on_delete=models.DO_NOTHING, related_name='Trash_Seller_of_this_transection',default=1)
+    BuyerWalletId       = models.ForeignKey(UserDetails,blank=True,null=True,on_delete=models.DO_NOTHING,related_name='Trash_6Buyer_of_this_transection',default=1)
+    FixedCash           = models.IntegerField(default=None,blank=False)
+    Time                = models.DateTimeField(auto_now_add=True)
+    paid                = models.BooleanField(default=False)
+    Product             = models.BooleanField(default=True)
+    Title               = models.CharField(blank=False,null=False,max_length=50,default='Write a TITLE')
+    ExtraText           = models.TextField(null=True, blank=True)
+    Image1              = models.ImageField(blank=True,null=True)
+    Image2              = models.ImageField(blank=True,null=True)
+    Image3              = models.ImageField(blank=True,null=True)
+    Image4              = models.ImageField(blank=True,null=True)
+    Image5              = models.ImageField(blank=True,null=True)

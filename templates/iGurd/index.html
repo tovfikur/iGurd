@@ -40,7 +40,7 @@
         <div class="row d-flex align-items-center nav-height">
           <div class="col-6 col-md-5 col-lg-2 p-lg-0">
             <div class="logo">
-              <a href="index.html"><img class="mx-4 mx-md-3" src="{% static 'css/images/innerLogo.png' %}" alt=""></a>
+              <a href="/"><img class="mx-4 mx-md-3" src="{% static 'css/images/innerLogo.png' %}" alt=""></a>
             </div>
           </div>
           <div class="p-0 d-none d-lg-block col-lg-6">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 p-0 d-flex justify-content-start justify-content-md-end">
-                  <a href="/login" type="submit" class="btn btn-primary my-3">Let's get started</a>
+                  <a href="#" type="submit" class="btn btn-primary my-3">Let's get started</a>
                 </div>
             </form>
               
@@ -509,7 +509,7 @@
         <div class="footer-wrap px-4">
           <div class="row align-items-start">
             <div class="col-sm-6 col-lg-4 py-2">
-              <a href="index.html"><img class="white-logo d-block" src="images/white-logo.png" alt=""></a>
+              <a href="/"><img class="white-logo d-block" src="images/white-logo.png" alt=""></a>
               <p class="m-0 py-4 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
             </div>
             <div class="col-sm-6 col-lg-4 py-2">
@@ -525,8 +525,8 @@
           <div class="col-6 text-lg-center py-2">
           <ul>
             <li><a href="/calc">Fee Calculator</a></li>
-            <li><a href="innerPages/toc.html">Terms of Service</a></li>
-            <li><a href="innerPages/privacy.html">Privacy Policy</a></li>
+            <li><a href="/toc">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
           </ul>
           </div>
       </div>
@@ -606,6 +606,24 @@
     indexArea.style.display = 'block'
   })
 
+  </script>
+  <script>
+      $(window).on('load', function() {
+          var token = $.cookie('token');
+          if (token){
+              $.ajax({
+                url: '/user/1',
+                headers: { 'token': $.cookie('token') },
+                success: (data) =>{
+                    $.cookie('id', "b'"+data.id+"'");
+                     window.location.replace('/dash');
+                },
+              error : () =>{
+                  window.location.replace = '/login'
+              }
+          })
+          }
+      });
   </script>
 <style>
     /* Fonts */

@@ -225,7 +225,7 @@
 									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="/dash">Dashboard</a>
 								</div>
 								<div class="side-profile d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="/edit">Profile</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="ed">Profile</a>
 								</div>
 								<div class="side-wallet d-flex align-items-center p-2">
 									<img alt="" class="" src="{% static 'css/images/nav-icons/wallet.png' %}"> <span class="side-wallet-text d-block"><a href="#">Wallet</a> <small class="d-block">Your balance <span id="side-wallet-balance">0.00</span> BDT</small></span>
@@ -682,7 +682,7 @@
                        if (object.BuyerWalletId && object.SellerWalletId){
                            $('#invite-partner-btn').hide();
                        } else if (object.BuyerWalletId || object.SellerWalletId){
-                           {#$('#invite-partner-btn').click()#}
+                           $('#invite-partner-btn').text('Add Me')
                        }
                        $.ajax({
                            url: '/user/public/'+object.Creator,
@@ -722,8 +722,20 @@
                }
             })
            $('#invite-partner-btn').click(()=>{
+               var data = {
+                   "code": object.id,
+                   "token": $.cookie('token'),
+                   "csrfmiddlewaretoken": "{{ csrf_token }}"
+               }
                $.ajax({
-                   url:'/inside?escrowid='+object.id
+                   url:'/middleware/link/add/',
+                   type:'post',
+                   data:data,
+                   success:(data) =>{
+                       {#$(location).attr('hostname')#}
+                       console.log(data)
+                   }
+
                })
            })
        })

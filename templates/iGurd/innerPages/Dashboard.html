@@ -223,8 +223,8 @@
 								<textarea class="form-control" id="escrowDescription" rows="4"></textarea>
 							</div>
 							<div class="dropzone pb-2">
-								<label for="escrowDropzone">Images</label>
-                                <input id="input-2" name="input2[]" type="file" class="file"  data-show-upload="false" data-show-caption="true" multiple>
+{#								<label for="escrowDropzone">Images</label>#}
+{#                                <input id="input-2" name="input2[]" type="file" class="file"  data-show-upload="false" data-show-caption="true" multiple>#}
 {#								<div class="js-dropzone dz-dropzone dz-dropzone-boxed gradient-overlay-half-primary-v4" id="escrowDropzone">#}
 {#									<div class="dz-message mt-4 mt-md-2">#}
 {#										<figure class="max-w-4rem mx-auto mb-2">#}
@@ -478,47 +478,42 @@
             var desc = $('#escrowDescription').val();
             var amnt = $('#escrowAmountField').val();
             var token = $.cookie('token');
-            var fp = $("#input-2");
-            var lg = fp[0].files.length; // get length
-            var items = fp[0].files;
-
-            var img1 = items[0];
-            var img2 = items[1];
-            var img3 = items[2];
-            var img4 = items[3];
-            var img5 = items[4];
+            {#var fp = $("#input-2");#}
+            {#var lg = fp[0].files.length; // get length#}
+            {#var items = fp[0].files;#}
+            {##}
+            {#var img1 = items[0];#}
+            {#var img2 = items[1];#}
+            {#var img3 = items[2];#}
+            {#var img4 = items[3];#}
+            {#var img5 = items[4];#}
 
             var JsonData = {
-
+                "token":token,
+                "Creator":id,
+                "BuyerWalletId":null,
+                "SellerWalletId":null,
+                "FixedCash":amnt,
+                "Product":prod,
+                "Title":title,
+                "ExtraText":desc,
+                "csrfmiddlewaretoken": '{{ csrf_token }}'
             }
-
-            {#var fromData = new FormData();#}
-            {#fromData.append("token",$.cookie('token'));#}
-            {#fromData.append("Creator",$.cookie('id'));#}
-            {#if (type){#}
-            {#    fromData.append("BuyerWalletId",$.cookie('id'));#}
-            {# }else{ #}
-            {#    fromData.append("SellerWalletId",$.cookie('id'));#}
-            {# } #}
-            {#fromData.append("FixedCash",amnt);#}
-            {#fromData.append("Product",prod);#}
-            {#fromData.append("Title",title);#}
-            {#fromData.append("ExtraText",desc);#}
-            {#fromData.append("Image1",img1);#}
-            {#fromData.append("Image2",img2);#}
-            {#fromData.append("Image3",img3);#}
-            {#fromData.append("Image4",img4);#}
-            {#fromData.append("Image5",img5);#}
-
+            console.log(id)
+            if (type){
+                JsonData.BuyerWalletId = $.cookie('id')
+            } else {
+                JsonData.SellerWalletId =$.cookie('id')
+            }
 
              $.ajax({
                  url: '/middleware/link/create/',
                  type: 'post',
                  dataType: 'json',
-                 data: fromData,
+                 data: JsonData,
                  headers: { 'token': $.cookie('token') },
                  success: (data) =>{
-                     console.log(data);
+                     window.location.replace('/dash')
                 }
              });
         }
@@ -541,7 +536,11 @@
         });
     })
 </script>
+<script>
+    $('.invite-partner-btn').click(()=>{
 
+    })
+</script>
 <style>
     /* Fonts */
 
