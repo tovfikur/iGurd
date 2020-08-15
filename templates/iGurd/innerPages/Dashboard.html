@@ -19,39 +19,16 @@
 				<div class="right-nav">
 					<div class="nav-links d-flex d-block justify-content-between align-items-center">
 						<a class="single-tab active" href="/dash"><img alt="" src="{% static 'css/images/nav-icons/home.png'%}"></a> <!-- Unfold (Dropdown) -->
-						<div class="hs-unfold">
+						<div id="notice-dropdown" class="hs-unfold" onclick="xhrcall()">
 							<a class="js-hs-unfold-invoker dropdown-toggle single-tab" data-hs-unfold-options='{ "target": "#dropdownWithHref", "type": "css-animation", "animationIn": "fadeInUp", "animationOut": "fadeOutDown", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/notification.png' %}"></a>
 							<div class="hs-unfold-content dropdown-menu notification-area" id="dropdownWithHref">
 								<div class="single-notice-wrap">
-									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/user.png'%}">
-										<div class="notification-text">
-											<p><a href="/dash" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/user.png'%}">
-										<div class="notification-text">
-											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-									<div class="single-notification-area system-notice dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/system.png' %}">
-										<div class="notification-text">
-											<p>System invited you to pay the escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
-										<div class="notification-text">
-											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-								</div>
+
+                                </div>
 							</div>
 						</div><!-- End Unfold (Dropdown) -->
 						<!-- Unfold (Sidebar) -->
-						<div class="hs-unfold">
+						<div class="hs-unfold" onclick="callCAsh()">
 							<a class="single-tab js-hs-unfold-invoker" data-hs-unfold-options='{ "target": "#sidebarContent", "type": "css-animation", "animationIn": "fadeInRight", "animationOut": "fadeOutRight", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/hamburger-bars.png' %}"></a>
 						</div><!-- End Unfold (Sidebar) -->
 					</div>
@@ -519,6 +496,27 @@
              });
         }
     </script>
+    <script>
+         function xhrcall() {
+                $.ajax({
+                    url:'/messenger/notice/',
+                    type:'get',
+                    headers: { 'token': $.cookie('token') },
+                    success: (data)=>{
+                        $('.single-notice-wrap').empty();
+                        $.each(data, (i,val)=>{
+                            $('.single-notice-wrap').append('<div class="single-notification-area system-notice dropdown-item" id="single-notification">' +
+                                '<img alt="" src="{% static 'css/images/nav-icons/system.png' %}">' +
+                                '<div class="notification-text">' +
+                                '<p>'+val.Text+'</p><small id="notification-time"><span id="notification-exact-time">'+val.Time+'</span> ago</small>' +
+                                '</div>' +
+                                '</div>'
+                            )
+                        })
+                    }
+                 })
+            }
+    </script>
 <script>
     $('#AddMoney').click(()=>{
         $('#token').val($.cookie('token'));
@@ -537,6 +535,16 @@
         });
     })
 </script>
+    <script>
+        function callCAsh(){
+            $.ajax({
+                url: '/wallet/'+object.Creator,
+                success: (data)=>{
+                    $('#side-wallet-balance').text(data.Cash)
+                }
+            })
+        }
+    </script>
 <script>
     $('.invite-partner-btn').click(()=>{
 
@@ -1745,3 +1753,4 @@ input[type="radio"]:checked+label {
 </style>
 </body>
 </html>
+
