@@ -414,6 +414,7 @@
 					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
 				</div>
 				<form>
+                    {% csrf_token %}
 					<div class="modal-body text-center">
 						<div class="deleteEscrowWarning">
 							<p class="deleteEscrowTopWarning">Do you really want to delete the escrow payment?</p>
@@ -738,8 +739,24 @@
 
                })
            })
-
-
+           $('#toggle-off').click(()=>{
+               $('#deleteEscrowModal').modal('hide');
+           });
+           $('#toggle-on').click(()=>{
+               $.ajax({
+                   url:'/middleware/link/delete/'+object.id,
+                   type: 'DELETE',
+                   headers: {
+                       "X-CSRFToken": "{{ csrf_token }}",
+                   },
+                   data: {
+                       "csrfmiddlewaretoken": "{{ csrf_token }}",
+                   },
+                   success: (data) =>{
+                       console.log(data)
+                   }
+               })
+           })
        })
 
     </script>
