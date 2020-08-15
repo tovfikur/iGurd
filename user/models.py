@@ -2,6 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
+
 class UserDetails(models.Model):
     FullName   	= models.CharField(default=None,max_length=20)
     District	= models.CharField(default=None,max_length=20)

@@ -47,8 +47,8 @@ class TransectionView(generics.CreateAPIView):
                     seller_wallet = wallet.get(id=int(request.data.get('SellerWalletId')))
                     if not wallet_user == seller_wallet:
                         return Response({'Wallet': 'You are not authorized to use this wallet'})
-                    if not request.data.get('BuyerWalletId') == request.data.get('Creator'):
-                        return Response({"Wallet":"It isn't valid wallet id"})
+                    # if not request.data.get('BuyerWalletId') == request.data.get('Creator'):
+                    #     return Response({"Wallet":"It isn't valid wallet id"})
             except Exception as e:
                 print('m1',e)
                 return Response({'error':str(e)})

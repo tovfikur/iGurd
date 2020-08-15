@@ -477,8 +477,8 @@
                 "csrfmiddlewaretoken": '{{ csrf_token }}'
             }
             console.log(JsonData)
-            console.log(id)
-            if (type){
+            console.log(type)
+            if (parseInt(type)){
                 JsonData.BuyerWalletId = $.cookie('id')
             } else {
                 JsonData.SellerWalletId =$.cookie('id')
@@ -538,7 +538,7 @@
     <script>
         function callCAsh(){
             $.ajax({
-                url: '/wallet/'+object.Creator,
+                url: '/wallet/'+$.cookie('id'),
                 success: (data)=>{
                     $('#side-wallet-balance').text(data.Cash)
                 }

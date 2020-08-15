@@ -7,6 +7,7 @@ class ChatSerializer(serializers.ModelSerializer):
         model = Chat
         fields = [
             'id',
+            'Transaction',
             'UserID',
             'Time',
             'Text',
