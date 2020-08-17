@@ -81,9 +81,6 @@
 								<h4>Personal Address</h4>
 								<p class="user-personal-address" id="user-personal-address">Polashi Bhabon, Zahurul Nagor, Bogura.</p>
 							</div>
-							<div class="account-deletation-area single-profile-area">
-								<h4>Delete My Account</h4><a class="delete-account" data-target="#deleteAccountModal" data-toggle="modal" href="#" id="delete-account">Delete Account</a>
-							</div>
 						</div>
 					</div>
 					<div class="col-md-6 py-5 d-block py-md-0">
@@ -225,61 +222,6 @@
 			</div>
 		</div>
 	</div><!-- ======== Change Password Confirmation Modal Ends ======= -->
-	<!-- ======== Delete Account Modal Starts ======= -->
-	<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="deleteAccountModal" role="dialog" tabindex="-1">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div class="modal-title-area">
-						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
-						<h5 class="modal-title" id="ChangePassModalTitle">Delete My Account</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
-				</div>
-				<div class="modal-body">
-					<div class="delete-account-text">
-						<p>Deleting your account will remove all of your information from our database. This action cannot be undone.</p>
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1">Deleting Reason</label> 
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="ConfirmPassword">Confirm Password</label> <input class="form-control" id="ConfirmPassword" required="" type="password">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn text-white delete-account-submit" data-dismiss="modal" data-target="#delete-account-confirmed" data-toggle="modal" id="delete-account" type="button">Submit</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!-- ======== Delete Account Modal Ends ======= -->
-	<!-- ======== Delete Account Modal Starts ======= -->
-	<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="delete-account-confirmed" role="dialog" tabindex="-1">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content text-center">
-				<div class="modal-header">
-					<div class="modal-title-area">
-						<img alt="" src="{% static 'css/images/dashboard/change-pass.png' %}">
-						<h5 class="modal-title" id="ChangePassModalTitle">Delete My Account</h5>
-					</div><button aria-label="Close" class="btn btn-xs btn-icon" data-dismiss="modal" type="button"><img alt="" src="{% static 'css/images/dashboard/close.png' %}"></button>
-				</div>
-				<div class="modal-body">
-					<div class="delete-account-text">
-						<div class="account-delete-confirmation">
-							<p>Your account deletation request was submitted.</p>
-						</div>
-						<div class="delete-account-instructions">
-							<p>Our team will review your account history and transection history and delete your account.</p>
-							<p>It can take 3 business days.</p>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn text-white delete-account-submit" id="delete-account" type="button">Logout</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!-- ======== Delete Account Modal Ends ======= -->
 	<!-- ======== Account Verification Modal Starts ======= -->
 	<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="verificationModal" role="dialog" tabindex="-1">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -388,7 +330,7 @@
 						</div>
 						<div class="description-dropzone-area">
 							<div class="form-group description pb-2">
-								<label for="escrowDescription">Description</label> 
+								<label for="escrowDescription">Description</label>
 								<textarea class="form-control" id="escrowDescription" rows="4"></textarea>
 							</div>
 							<div class="dropzone pb-2">
@@ -546,31 +488,31 @@
 	</div><!-- ======== Add Money Confirmation Modal Ends ======= -->
 	<!-- JS Global Compulsory -->
 	<script src="{% static 'js/jquery.min.js '%}">
-	</script> 
+	</script>
 	<script src="{% static 'js/jquery-migrate.min.js '%}">
-	</script> 
+	</script>
 	<script src="{% static 'js/bootstrap.bundle.min.js '%}">
-	</script> 
+	</script>
 	<script src="{% static 'js/dropzone.min.js '%}">
-	</script> 
+	</script>
 	<script src="{% static 'js/hs.core.js '%}">
-	</script> 
+	</script>
 	<script src="{% static 'js/hs-unfold.min.js '%}">
-	</script> 
+	</script>
 	<script src="{% static 'js/hs.dropzone.js '%}">
-	</script> 
+	</script>
 	<script>
 	       $(document).on('ready', function () {
 	       // initialization of unfold
 	       var unfold = new HSUnfold('.js-hs-unfold-invoker').init();
 	       });
-	</script> 
+	</script>
 	<script>
 	       $(document).on('ready', function () {
 	         // initialization of dropzone
 	         $('.dz-dropzone').each(function () {
 	           var dropzone = $.HSCore.components.HSDropzone.init('#' + $(this).attr('id'));
-	     
+
 	           dropzone.on("addedfile", function() {
 	             console.log('File added!!!');
 	           });

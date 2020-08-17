@@ -615,7 +615,7 @@
                 url: '/user/1',
                 headers: { 'token': $.cookie('token') },
                 success: (data) =>{
-                    $.cookie('id', "b'"+data.id+"'");
+                    $.cookie('id', data.id);
                      window.location.replace('/dash');
                 },
               error : () =>{

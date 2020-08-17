@@ -13,6 +13,7 @@ class Massages(generics.ListCreateAPIView):
     serializer_class = ChatSerializer
 
     def get_queryset(self):
+        print(self.request.META.get('HTTP_TRANSACTION'))
         obj = Chat.objects.filter(Q(Transaction_id=self.request.META.get('HTTP_TRANSACTION')))
         return obj
 

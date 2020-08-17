@@ -106,58 +106,13 @@
 							</ul><!-- End Step -->
 						</div>
 					</div>
-					<div class="right-text second-right bg-white p-3 my-2 d-flex align-items-center">
-						<img alt="" src="{% static 'css/images/dashboard/user.png' %}"><a class="buyer-name" href="#" id="buyer-name">Abu Hasan Rumi</a>
-					</div>
+					
 					<div class="right-text third-right chat-box-area bg-white p-3 my-2">
 						<div class="chat-box" id="chat-box">
-							<div class="system-message d-flex align-items-center" id="system-message">
-								<img alt="" src="{% static 'css/images/dashboard/system.png' %}">
-								<div class="message-text">
-									<small class="message-time">a few seconds ago</small>
-									<p>You have created the escrow payment</p>
-								</div>
-							</div>
-							<div class="your-message d-flex align-items-end flex-column" id="your-message">
-								<div class="message-text">
-									<small class="message-time">a few seconds ago</small>
-									<p>Please pay after you join</p>
-								</div>
-							</div>
-							<div class="system-message d-flex align-items-center" id="system-message">
-								<img alt="" src="{% static 'css/images/dashboard/system.png' %}">
-								<div class="message-text">
-									<small class="message-time">a few seconds ago</small>
-									<p><span class="partner-name" id="partner-name">Abu Hasan Rumi</span> joined the escrow</p>
-								</div>
-							</div>
-							<div class="partner-message d-flex align-items-center" id="partner-message">
-								<img alt="" src="{% static 'css/images/dashboard/user.png' %}">
-								<div class="message-text">
-									<small class="message-time">a few seconds ago</small>
-									<p>I will pay now</p>
-								</div>
-							</div>
-							<div class="pay-now-area d-flex justify-content-center">
-								<a class="btn pay-now-btn" data-dismiss="modal" data-target="#payNowModalPop" data-toggle="modal" href="#" id="pay-now-btn">Pay Now</a>
-							</div>
-							<div class="your-message d-flex align-items-end flex-column" id="your-message">
-								<div class="message-text">
-									<small class="message-time">a few seconds ago</small>
-									<p>I am not sure about the pay button</p>
-								</div>
-							</div>
-							<div class="partner-message d-flex align-items-center" id="partner-message">
-								<img alt="" src="{% static 'css/images/dashboard/user.png' %}">
-								<div class="message-text">
-									<small class="message-time">a few seconds ago</small>
-									<p>No problem, I've found it.</p>
-								</div>
-							</div>
 						</div>
 						<form>
 							<div class="form-group my-2">
-								<input class="form-control" id="inputMessage" placeholder="Type your message" type="text"> <button class="btn chat-send-btn" type="submit"><img alt="" src="{% static 'css/images/dashboard/send.png' %}"></button>
+								<input class="form-control" id="inputMessage" placeholder="Type your message" type="text"> <button class="btn chat-send-btn" type="button" onclick="SendSms(this)"><img alt="" src="{% static 'css/images/dashboard/send.png' %}"></button>
 							</div>
 						</form>
 					</div>
@@ -201,7 +156,7 @@
 									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="/dash">Dashboard</a>
 								</div>
 								<div class="side-profile d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="ed">Profile</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="/edit">Profile</a>
 								</div>
 								<div class="side-wallet d-flex align-items-center p-2">
 									<img alt="" class="" src="{% static 'css/images/nav-icons/wallet.png' %}"> <span class="side-wallet-text d-block"><a href="#">Wallet</a> <small class="d-block">Your balance <span id="side-wallet-balance">0.00</span> BDT</small></span>
@@ -649,6 +604,32 @@
            console.log(object);
 
            $.ajax({
+               url:'/messenger/',
+               headers: { 'transaction': object.id },
+               success:(data)=>{
+                   $.each(data,(i,val)=>{
+                       if (val.UserID == object.Creator){
+                           $('.chat-box').append('<div class="system-message d-flex align-items-center" id="system-message">\n' +
+                               '<img alt="" src="{% static 'css/images/dashboard/system.png' %}">\n' +
+                               '<div class="message-text">\n' +
+                               {#'<small class="message-time">a few seconds ago</small>\n' +#}
+                               '<p>'+val.Text+'</p>\n' +
+                               '</div>\n' +
+                               '</div>'
+                           )
+                       } else {
+                           $('.chat-box').append('<div class="your-message d-flex align-items-end flex-column" id="your-message">\n' +
+                               '<div class="message-text">\n' +
+                               {#'<small class="message-time">a few seconds ago</small>\n' +#}
+                               '<p>'+val.Text+'</p>\n' +
+                               '</div>\n' +
+                               '</div>')
+                       }
+                   })
+               }
+           })
+
+           $.ajax({
                url: '/wallet/'+object.Creator,
                success: (data)=>{
                    $('#side-wallet-balance').text(data.Cash)
@@ -691,7 +672,7 @@
            if (object.BuyerWalletId && object.SellerWalletId){
                $('#invite-partner-btn').hide();
            } else if (object.BuyerWalletId || object.SellerWalletId){
-               {#$('#invite-partner-btn').click()#}
+               $('#invite-partner-btn').text('Add Me')
            }
 
            $.ajax({
@@ -717,8 +698,7 @@
                    type:'post',
                    data:data,
                    success:(data) =>{
-                       {#$(location).attr('hostname')#}
-                       console.log(data)
+                       $('#invite-partner-btn').text(data.Code);
                    }
 
                })
@@ -776,6 +756,56 @@
                 success: (data)=>{
                     $('#side-wallet-balance').text(data.Cash)
                 }
+            })
+        }
+    </script>
+    <script>
+        function SendSms(x) {
+            var tester = getUrlParameter('escrowid');
+            var EscrowData = localStorage.getItem('escrow'+tester);
+            var object = JSON.parse(EscrowData);
+            var Transaction = object.id;
+            var UserID = $.cookie('id');
+            var Text = $('#inputMessage').val()
+            var Jsondata = {
+                "Transaction":Transaction,
+                "UserID":UserID,
+                "Text":Text,
+                "csrfmiddlewaretoken": "{{ csrf_token }}"
+            }
+            console.log(Jsondata);
+            $.ajax({
+                   url:'/messenger/',
+                   type:'post',
+                   data:Jsondata,
+                   success:(data) =>{
+                       $.ajax({
+                           url:'/messenger/',
+                           headers: { 'transaction': object.id },
+                           success:(data)=>{
+                               $('.chat-box').empty();
+                               $.each(data,(i,val)=>{
+                                   if (val.UserID == object.Creator){
+                                       $('.chat-box').append('<div class="system-message d-flex align-items-center" id="system-message">\n' +
+                                           '<img alt="" src="{% static 'css/images/dashboard/system.png' %}">\n' +
+                                           '<div class="message-text">\n' +
+                                           {#'<small class="message-time">a few seconds ago</small>\n' +#}
+                                           '<p>'+val.Text+'</p>\n' +
+                                           '</div>\n' +
+                                           '</div>'
+                                       )
+                                   } else {
+                                       $('.chat-box').append('<div class="your-message d-flex align-items-end flex-column" id="your-message">\n' +
+                                           '<div class="message-text">\n' +
+                                           {#'<small class="message-time">a few seconds ago</small>\n' +#}
+                                           '<p>'+val.Text+'</p>\n' +
+                                           '</div>\n' +
+                                           '</div>')
+                                   }
+                               })
+                           }
+                       })
+                   }
             })
         }
     </script>
