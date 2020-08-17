@@ -16,46 +16,6 @@
 				<div>
 					<a href="/dash"><img alt="iGurd Logo" class="logo" src="{% static 'css/images/innerLogo.png' %}"></a>
 				</div>
-				<div class="right-nav">
-					<div class="nav-links d-flex d-block justify-content-between align-items-center">
-						<a class="single-tab" href="/dsh"><img alt="" src="{% static 'css/images/nav-icons/home.png' %}"></a> <!-- Unfold (Dropdown) -->
-						<div class="hs-unfold">
-							<a class="js-hs-unfold-invoker dropdown-toggle single-tab" data-hs-unfold-options='{ "target": "#dropdownWithHref", "type": "css-animation", "animationIn": "fadeInUp", "animationOut": "fadeOutDown", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/notification.png' %}"></a>
-							<div class="hs-unfold-content dropdown-menu notification-area" id="dropdownWithHref">
-								<div class="single-notice-wrap">
-									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
-										<div class="notification-text">
-											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
-										<div class="notification-text">
-											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-									<div class="single-notification-area system-notice dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/system.png' %}">
-										<div class="notification-text">
-											<p>System invited you to pay the escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-									<div class="single-notification-area dropdown-item" id="single-notification">
-										<img alt="" src="{% static 'css/images/nav-icons/user.png' %}">
-										<div class="notification-text">
-											<p><a href="#" id="user-profile">Md. Shahoreyer M.</a> invited you to join <a href="#" id="escrow-link">Test</a> escrow payment</p><small id="notification-time"><span id="notification-exact-time">1 hr</span> ago</small>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div><!-- End Unfold (Dropdown) -->
-						<!-- Unfold (Sidebar) -->
-						<div class="hs-unfold">
-							<a class="single-tab js-hs-unfold-invoker active" data-hs-unfold-options='{ "target": "#sidebarContent", "type": "css-animation", "animationIn": "fadeInRight", "animationOut": "fadeOutRight", "hasOverlay": "rgba(0,0,0,.1)", "smartPositionOff": true }' href="javascript:;"><img alt="" src="{% static 'css/images/nav-icons/hamburger-bars.png' %}"></a>
-						</div><!-- End Unfold (Sidebar) -->
-					</div>
-				</div>
 			</nav>
 		</div>
 	</header>
@@ -142,7 +102,7 @@
 						<div class="sidebar-content">
 							<div class="side-nav-w-icons p-4">
 								<div class="side-dashboard d-flex align-items-center p-2">
-									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="/dsh">Dashboard</a>
+									<img alt="" class="" src="{% static 'css/images/nav-icons/home.png' %}"> <a href="/dash">Dashboard</a>
 								</div>
 								<div class="side-profile d-flex align-items-center p-2">
 									<img alt="" class="" src="{% static 'css/images/nav-icons/profile.png' %}"> <a href="/edit">Profile</a>
@@ -487,19 +447,21 @@
 		</div>
 	</div><!-- ======== Add Money Confirmation Modal Ends ======= -->
 	<!-- JS Global Compulsory -->
-	<script src="{% static 'js/jquery.min.js '%}">
+	<script src="{% static 'js/jquery.min.js' %}">
 	</script>
-	<script src="{% static 'js/jquery-migrate.min.js '%}">
+	<script src="{% static 'js/jquery-migrate.min.js' %}">
 	</script>
-	<script src="{% static 'js/bootstrap.bundle.min.js '%}">
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}">
 	</script>
-	<script src="{% static 'js/dropzone.min.js '%}">
+	<script src="{% static 'js/hs.core.js' %}">
 	</script>
-	<script src="{% static 'js/hs.core.js '%}">
+	<script src="{% static 'js/hs-unfold.min.js' %}">
 	</script>
-	<script src="{% static 'js/hs-unfold.min.js '%}">
+	<script src="{% static 'js/dropzone.min.js' %}">
 	</script>
-	<script src="{% static 'js/hs.dropzone.js '%}">
+	<script src="{% static 'js/hs.dropzone.js' %}">
+	</script>
+	<script src="{% static 'js/scripts.js' %}">
 	</script>
 	<script>
 	       $(document).on('ready', function () {
@@ -519,6 +481,20 @@
 	         });
 	       });
 	</script>
+    <script>
+        $(document).on('ready', ()=>{
+            $.ajax({
+                url:'/user/public/'+$.cookie('id'),
+                success:(data)=>{
+                    $('#phone-number').text(data.Phone);
+                    $('#user-full-name').text(data.FullName);
+                    var address = data.Street+','+data.City+','+data.District
+                    $('#user-personal-address').text(address)
+                }
+            })
+        })
+    </script>
+
 <style>
     /* Fonts */
 

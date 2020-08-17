@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from .login import check_token
 # Create your views here.
 
-from .models import UserDetails, UserToken
+from .models import UserDetails, UserToken, LoogedIn
 from wallet.models import WalletDetails
 from .serializers import UserSerializer, UserUpdateSerialiser, LoginSerializer, UserRetriveSerializer
 
@@ -75,14 +75,18 @@ class LoginView(APIView):
             except Exception:
                 pass
             if user_obj[0]:
-                print(request.META.get('INVOCATION_ID'))
-                key = Fernet.generate_key();
+                key = Fernet.generate_key()
                 user_token_obj = UserToken.objects.get_or_create(user=user_obj[0],token=encrypt(request.data['phone'].encode(),key))
         except Exception as e:
             return Response({'error':str(e)})
 
         try:
             if user_token_obj:
+                print('-------------------------------------------------------------------------------', self.request.META['USER'])
+                temp_instance = LoogedIn.objects
+                temp_instance.user = user_obj.first().id
+                temp_instance.device = self.request.META['USER']
+                temp_instance.save()
                 return Response({'login':'Success','token':user_token_obj[0].token, 'id':user_obj.first().id})
         except:
             print('not sending token')
