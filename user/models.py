@@ -23,6 +23,6 @@ class UserToken(models.Model):
     token   = models.CharField(unique=True,blank=False,default='0',max_length=256)
 
 
-class LoogedIn(models.Model):
+class LoggedIn(models.Model):
     device  = models.CharField(max_length=200,default=None,blank=True,null=True)
     user    = models.ForeignKey(UserDetails, on_delete=models.CASCADE,blank=False)

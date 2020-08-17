@@ -28,7 +28,7 @@ class CashInView(generics.GenericAPIView):
                 # trxid = request.data['trxid']
                 token = request.data['token']
             except Exception as e:
-                return Response({'error1':str(e)})
+                return Response({'error':str(e)})
             try:
                 middleware_cash_obj = Cash.objects.filter(PhoneNumber = phone)[0] #just a trxid filter for more protection
                 token_obj = UserToken.objects.filter(token=token)[0].user
@@ -40,9 +40,9 @@ class CashInView(generics.GenericAPIView):
                     wallet_obj.Cash = wallet_obj.Cash + wallet_cash_obj.Amount
                     wallet_obj.save()
                 except Exception as e:
-                    return Response({'error2':str(e)})
+                    return Response({'error':str(e)})
             except Exception as e:
-                return Response({'error3':str(e)})
+                return Response({'error':str(e)})
             return Response({'temp_resp':'working'})
         except Exception as e:
             return Response({'error':str(e)})

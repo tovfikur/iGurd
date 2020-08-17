@@ -490,6 +490,13 @@
                     $('#user-full-name').text(data.FullName);
                     var address = data.Street+','+data.City+','+data.District
                     $('#user-personal-address').text(address)
+                    $.ajax({
+                        url: '/user/device/',
+                        headers:{'token':$.cookie('token')},
+                        success:(data)=>{
+                            $('#logged-in-device').text(data.device_user)
+                        }
+                    })
                 }
             })
         })

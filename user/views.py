@@ -1,15 +1,18 @@
 from cryptography.fernet import Fernet
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
+from wallet import views
 from .login import check_token
 # Create your views here.
 
-from .models import UserDetails, UserToken, LoogedIn
+from .models import UserDetails, UserToken, LoggedIn
 from wallet.models import WalletDetails
-from .serializers import UserSerializer, UserUpdateSerialiser, LoginSerializer, UserRetriveSerializer
+from .serializers import UserSerializer, UserUpdateSerialiser, LoginSerializer, UserRetriveSerializer, LoggedInSerializer
 
 
 def encrypt(message: bytes, key: bytes) -> bytes:
@@ -83,9 +86,7 @@ class LoginView(APIView):
         try:
             if user_token_obj:
                 print('-------------------------------------------------------------------------------', self.request.META['USER'])
-                temp_instance = LoogedIn.objects
-                temp_instance.user = user_obj.first().id
-                temp_instance.device = self.request.META['USER']
+                temp_instance = LoggedIn(user=user_obj.first(), device=self.request.META['USER'])
                 temp_instance.save()
                 return Response({'login':'Success','token':user_token_obj[0].token, 'id':user_obj.first().id})
         except:
@@ -111,3 +112,10 @@ class UserPublicData(generics.RetrieveAPIView):
     queryset = UserDetails.objects.all()
     serializer_class = UserRetriveSerializer
     lookup_field = 'id'
+
+
+class LoggedDevice(generics.GenericAPIView):
+    def get(self, request):
+        print(self.request.META.get('HTTP_TOKEN'))
+        obj = LoggedIn.objects.filter(Q(user__usertoken__token=request.META.get('HTTP_TOKEN'))).first()
+        return Response({'device_user': obj.device})

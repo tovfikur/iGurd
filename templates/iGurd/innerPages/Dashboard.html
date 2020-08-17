@@ -48,7 +48,7 @@
 								<p class="card-text user-phone" id="user-phone"></p>
 							</div>
 							<div class="card-footer">
-								<a href="/edit">Edit Account</a>
+								<a href="#">Varified</a>
 							</div>
 						</div>
 					</div>
@@ -491,7 +491,12 @@
                  data: JsonData,
                  headers: { 'token': $.cookie('token') },
                  success: (data) =>{
-                     window.location.replace('/dash')
+                     if (data.Cash == 'Wallet out of money'){
+                         $('#addWalletMoneyModal').modal('show')
+                     }else {
+                         {#window.location.replace('/dash')#}
+                         alert('created')
+                     }
                 }
              });
         }
