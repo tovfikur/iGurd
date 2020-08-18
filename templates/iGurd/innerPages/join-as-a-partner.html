@@ -19,21 +19,6 @@
 						<a href="/"><img alt="" class="mx-4 mx-md-3" src="{% static 'css/images/innerLogo.png' %}"></a>
 					</div>
 				</div>
-				<div class="p-0 d-none d-lg-block col-lg-6">
-					<nav class="nav-area">
-						<a class="nav-item pl-0" href="/#hero-area">Home</a> <a class="nav-item" href="/#about-area">About us</a> <a class="nav-item" href="/#process-area">How it works</a> <a class="nav-item br-none" href="/fee">Fee Calculator</a>
-					</nav>
-				</div>
-				<div class="col-6 col-md-6 col-lg-4 d-none d-md-block text-right">
-					<div class="user-buttons text-right">
-						<a class="signup-btn px-2 px-md-3 py-2" href="/signup">Sign up</a> <a class="login-btn px-3 px-md-4 py-2" href="/login">Login</a>
-					</div>
-				</div>
-				<div class="col-6 col-md-1 d-lg-none text-right">
-					<div class="sidenav" id="mySidenav">
-						<a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a> <a class="nav-item" href="#hero-area">Home</a> <a class="nav-item" href="#about-area">About us</a> <a class="nav-item" href="#process-area">How it works</a> <a class="nav-item" href="/fee">Fee Calculator</a> <a class="nav-item d-md-none" href="/signup">Sign up</a> <a class="nav-item d-md-none" href="/login">Login</a>
-					</div><span class="d-flex justify-content-end align-items-center" onclick="openNav()" style="font-size:30px;cursor:pointer"><img alt="" class="hamburder-bars mx-4 mx-md-3" src="{% static 'css/images/nav-icons/hamburger-bars.png' %}"></span>
-				</div>
 			</div>
 		</div>
 	</header>
@@ -66,18 +51,15 @@
 								<div class="escrow-body-invited-by d-flex justify-content-between">
 									<p class="escrow-invited-by grey-text">Invited by:</p><span class="black-text" id="escrow-invited-by-value">Md. Shahoreyer H.</span>
 								</div>
-								<div class="escrow-body-your-fees d-flex justify-content-between">
-									<p class="escrow-your-fees grey-text">Your fees:</p><span class="black-text" id="escrow-your-fees-value">50.00 BDT</span>
-								</div>
-								<div class="escrow-body-you-pay d-flex justify-content-between">
-									<p class="escrow-you-pay grey-text">You pay:</p><span class="black-text" id="escrow-you-pay-value">50.00 BDT</span>
-								</div><small>Fees: for companies excl. VAT.</small>
+{#								<div class="escrow-body-your-fees d-flex justify-content-between">#}
+{#									<p class="escrow-your-fees grey-text">Your fees:</p><span class="black-text" id="escrow-your-fees-value">50.00 BDT</span>#}
+{#								</div>#}
+{#								<div class="escrow-body-you-pay d-flex justify-content-between">#}
+{#									<p class="escrow-you-pay grey-text">You pay:</p><span class="black-text" id="escrow-you-pay-value">50.00 BDT</span>#}
+{#								</div><small>Fees: for companies excl. VAT.</small>#}
 							</div>
 							<div class="escrow-btns text-center">
 								<button class="accept-btn" data-target="#loginFormModal" data-toggle="modal" id="accept-btn" type="button">Accept and Pay</button>
-								<div class="escrow-negetive-btns d-flex justify-content-around">
-									<a class="later-btn" href="#">Maybe later</a> <a class="dont-accept-btn" href="#">Don't accept</a>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -413,9 +395,13 @@
 	</script> 
 	<script src="{% static 'js/bootstrap.bundle.min.js' %}">
 	</script> 
+	<script src="{% static 'js/dropzone.min.js' %}">
+	</script>
 	<script src="{% static 'js/hs.core.js' %}">
-	</script> 
+	</script>
 	<script src="{% static 'js/hs-unfold.min.js' %}">
+	</script>
+	<script src="{% static 'js/hs.dropzone.js' %}">
 	</script> 
 	<script src="{% static 'js/scripts.js' %}">
 	</script> 
@@ -425,6 +411,31 @@
 	       var unfold = new HSUnfold('.js-hs-unfold-invoker').init();
 	       });
 	</script>
+    <script>
+        $(document).ready(()=> {
+            var escrow_id = getUrlParameter('id');
+            $.ajax({
+                url: '/middleware/link/add/?code='+escrow_id,
+                success:(es_data)=>{
+                    if (es_data.fields.Creator){
+                        $.ajax({
+                            url: '/user/public/'+es_data.fields.Creator,
+                            success:(us_data)=>{
+                                console.log(us_data,es_data.fields)
+                                $('#sender-name').text(us_data.FullName);
+                                $('#escrow-invited-by-value').text(us_data.FullName);
+                                $('#transaction-id').text(es_data.pk);
+                                $('#escrow-amount').text(es_data.fields.FixedCash);
+                                $('.transaction-date').text(es_data.fields.Time)
+                                $('#escrow-buyer-value').text(es_data.fields.FixedCash)
+
+                            }
+                        })
+                    }
+                }
+            })
+        })
+    </script>
 <style>
     /* Fonts */
 @font-face {

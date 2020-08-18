@@ -602,6 +602,7 @@
            var EscrowData = localStorage.getItem('escrow'+tester);
            var object = JSON.parse(EscrowData);
            console.log(object);
+           var glob_add_btn;
 
            $.ajax({
                url:'/messenger/',
@@ -671,10 +672,14 @@
            $('#fixed').text(object.FixedCash);
            if (object.BuyerWalletId && object.SellerWalletId){
                $('#invite-partner-btn').hide();
-           } else if (object.BuyerWalletId || object.SellerWalletId){
-               $('#invite-partner-btn').text('Add Me')
+               glob_add_btn = 0;
+           } else if ((object.BuyerWalletId == $.cookie('id')) || (object.SellerWalletId == $.cookie('id'))){
+               $('#invite-partner-btn').text('Invite Business Partner');
+               glob_add_btn = 0;
+           } else {
+               $('#invite-partner-btn').text('Add Me');
+               glob_add_btn = 1;
            }
-
            $.ajax({
                url: '/middleware/link/pre/?price='+object.FixedCash,
                success: (data) => {
@@ -693,15 +698,19 @@
                    "token": $.cookie('token'),
                    "csrfmiddlewaretoken": "{{ csrf_token }}"
                }
-               $.ajax({
-                   url:'/middleware/link/add/',
-                   type:'post',
-                   data:data,
-                   success:(data) =>{
-                       $('#invite-partner-btn').text(data.Code);
-                   }
-
-               })
+               if (glob_add_btn){
+                   $.ajax({
+                       url:'/middleware/link/add/',
+                       type:'post',
+                       data:data,
+                       success:(data) =>{
+                           $('#invite-partner-btn').text(data.Code);
+                       }
+                   })
+               } else {
+                   $('#share-link').text(object.id)
+                   $('#invitePartnerModal').modal('show');
+               }
            })
            $('#toggle-off').click(()=>{
                $('#deleteEscrowModal').modal('hide');
